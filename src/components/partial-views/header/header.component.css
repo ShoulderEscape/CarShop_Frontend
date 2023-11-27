@@ -1,1 +1,41 @@
 /* Comment */
+.navbar {
+  position: fixed;
+  background-color: #9BBEC8;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.navbar > * {
+  float: right;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.navbar > *:not(:first-child) {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.navbar > *:not(:first-child):hover {
+  transition: all 0.4s;
+  background-color: #164863;
+  color: #9BBEC8;
+}
+
+.navbar > :first-child {
+  height: 100%;
+  /* Take up full height of the navbar */
+  margin-right: 10px;
+  /* Adjust margin as needed */
+  float: left;
+}
+
+.navbar > :first-child > * {
+  height: 44px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
