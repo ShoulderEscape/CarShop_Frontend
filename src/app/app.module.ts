@@ -11,13 +11,11 @@ import { CarFormComponent } from 'src/components/car-form/car-form.component';
 import { HomeComponent } from 'src/components/home/home.component';
 import { FilterComponent } from 'src/components/home/filter/filter.component';
 import { LoginComponent } from 'src/components/login/login.component';
-import { ProfileComponent } from 'src/components/profile/profile.component'; //Hello
+import { ProfileComponent } from 'src/components/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+  declarations: [
+    AppComponent,
     FooterComponent,
     HeaderComponent,
     AboutComponent,
@@ -27,6 +25,10 @@ import { ProfileComponent } from 'src/components/profile/profile.component'; //H
     FilterComponent,
     LoginComponent,
     ProfileComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
