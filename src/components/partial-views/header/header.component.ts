@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class HeaderComponent {
-  public isMenuOpen = false;
 
   toggleMenu() {
     let navbar=document.getElementsByClassName("navbar")[0];
@@ -18,7 +17,6 @@ export class HeaderComponent {
       navbar.classList.add("visible");
 
     }
-    this.isMenuOpen = !this.isMenuOpen;
   }
 }
 
