@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -32,7 +37,52 @@
   height: 44px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+.mobile-container {
+  display: none;
+}
+
+.menu-toggle span {
+  background: #333;
+  height: 3px;
+  width: 25px;
+  margin: 5px 0;
+  display: block;
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-container {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding-left: 5%;
+    padding-right: 50%;
+  }
+  #mobile-logo > * {
+    height: 44px;
+  }
+  .navbar {
+    visibility: hidden;
+    flex-direction: column;
+    display: flex;
+    width: 50%;
+    align-items: center;
+  }
+  .navbar > * {
+    float: none;
+    padding: 10px;
+    margin-top: 20%;
+    margin-bottom: 20%;
+  }
+  .navbar > *:not(:first-child) {
+    padding-left: 0;
+  }
+  .navbar > *:first-child {
+    display: none;
+  }
+  .visible {
+    visibility: visible !important;
+  }
 }

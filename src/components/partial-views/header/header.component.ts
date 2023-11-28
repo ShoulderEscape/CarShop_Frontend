@@ -5,6 +5,20 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
 
+export class HeaderComponent {
+  public isMenuOpen = false;
+
+  toggleMenu() {
+    let navbar=document.getElementsByClassName("navbar")[0];
+    
+    if(navbar.classList.contains("visible")){
+      navbar.classList.remove("visible");
+    } else{
+      navbar.classList.add("visible");
+
+    }
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }
+
