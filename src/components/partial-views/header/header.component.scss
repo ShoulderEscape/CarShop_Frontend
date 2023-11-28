@@ -1,45 +1,41 @@
-/* Comment */
 .navbar {
     position: fixed;
-    background-color: #9BBEC8;
     width: 100%;
+    background-color: #9BBEC8;
     border: 1px solid black;
-    
-
 
     > * {
         float: right;
-        padding-left: 5%;
         padding-right: 5%;
-        
-        &:not(:first-child){
-            padding-top:1%;
-            padding-bottom:1%;
-    
+
+        &:not(:first-child) {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            padding-left: 5%;
+
             &:hover {
-                transition: all 0.4s;
+                transition: background-color 0.6s;
                 background-color: #164863;
-                color:#9BBEC8
+
+                color: #9BBEC8;
             }
-        } 
-        &:first-child {
-            >* {
-                height:44px;
-            }
-            height: 100%; 
-            margin-right: 10px; 
-            
-    
-    
-            float: left;
         }
 
-        
-        
+        &:first-child {
+            float: left;
+            margin-right: 10px;
+            padding-left: 2%;
+
+            > img {
+                height: 44px;
+            }
+        }
     }
 }
+
+
+
 * {
     margin: 0;
     padding: 0;
 }
-
