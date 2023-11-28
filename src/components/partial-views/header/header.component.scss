@@ -11,29 +11,30 @@
         padding-left: 5%;
         padding-right: 5%;
         
-
-        
-    }
-    > *:not(:first-child){
-        padding-top:1%;
-        padding-bottom:1%;
-    }
-    > *:not(:first-child):hover{
-        transition: all 0.4s;
-        background-color: #164863;
-        color:#9BBEC8
-    }
-
-    > :first-child {
-        >* {
-            height:44px;
+        &:not(:first-child){
+            padding-top:1%;
+            padding-bottom:1%;
+    
+            &:hover {
+                transition: all 0.4s;
+                background-color: #164863;
+                color:#9BBEC8
+            }
+        } 
+        &:first-child {
+            >* {
+                height:44px;
+            }
+            height: 100%; 
+            margin-right: 10px; 
+            
+    
+    
+            float: left;
         }
-        height: 100%; /* Take up full height of the navbar */
-        margin-right: 10px; /* Adjust margin as needed */
+
         
-
-
-        float: left;
+        
     }
 }
 * {

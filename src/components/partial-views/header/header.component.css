@@ -23,15 +23,13 @@
   color: #9BBEC8;
 }
 
-.navbar > :first-child {
+.navbar > *:first-child {
   height: 100%;
-  /* Take up full height of the navbar */
   margin-right: 10px;
-  /* Adjust margin as needed */
   float: left;
 }
 
-.navbar > :first-child > * {
+.navbar > *:first-child > * {
   height: 44px;
 }
 
