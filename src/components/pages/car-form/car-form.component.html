@@ -1,1 +1,47 @@
-<p>car-form works!</p>
+<div class="car-sell-container">
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" formControlName="brand">
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" formControlName="model">
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" formControlName="year">
+
+    <label for="mileage">Mileage:</label>
+    <input type="text" id="mileage" formControlName="mileage">
+
+    <label for="fuelType">Fuel Type:</label>
+    <select id="fuelType" formControlName="fuelType">
+      <option value="petrol">Petrol</option>
+      <option value="diesel">Diesel</option>
+      <option value="electric">Electric</option>
+      <option value="hybrid">Hybrid</option>
+    </select>
+    
+
+    <label for="transmission">´Transmission:</label>
+    <select id="transmission" formControlName="transmission">
+      <option value="manual">Manual</option>
+      <option value="automatic">Automatic</option>
+    </select>
+
+    <label for="contactName">Contact Name:</label>
+    <input type="text" id="contactName" formControlName="contactName">
+
+    <label for="contactNumber">Contact Number:</label>
+    <input type="text" id="contactNumber" formControlName="contactNumber">
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" formControlName="price">
+
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+
+    <label for="images">Car Images:</label>
+    <input type="file" id="images" (change)="onFilesSelected($event)" multiple>
+
+    <button type="submit" [disabled]="!carForm.valid">Submit</button>
+  </form>
+</div>
