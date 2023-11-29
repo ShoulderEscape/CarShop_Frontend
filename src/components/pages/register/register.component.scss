@@ -1,12 +1,12 @@
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   padding: 25px;
   margin: 40px auto;
   max-width: 350px;
-  background-color: rgba(150, 148, 148, 0.176);
+  background-color: rgba(150, 148, 148, 0.176); // Mjuk gråton för distinktion
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0.1, 0.5);
   font-family: 'Arial', sans-serif;
@@ -16,39 +16,36 @@
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
-    color: #333;
-    align-self: start;
+    color: #333; // Mörk text för läsbarhet
   }
 
   input {
-    width: calc(100% - 24px);
+     width: calc(100% - 24px);
     padding: 12px;
     margin-bottom: 20px;
-    border: 2px solid #ddd;
+    border: 2px solid #ddd; // Ljusgrå för ett mjukt utseende
     border-radius: 6px;
     font-size: 15px;
-    align-self: center;
 
     &:focus {
-      border-color: #164863;
+      border-color: #164863; // Mörkblå när fältet är i fokus
       box-shadow: 0 0 0 3px rgba(22, 72, 99, 0.2);
       outline: none;
     }
   }
 
   button {
-    width: calc(100% - 24px);
+    width: 100%;
     padding: 12px 0;
     margin-top: 10px;
     border: none;
     border-radius: 6px;
-    background-color: #164863;
+    background-color: #164863; // Mörkblå för knapp
     color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
-    align-self: center;
 
     &:hover {
       background-color: darken(#164863, 10%);
@@ -63,10 +60,9 @@
   .register-link {
     margin-top: 20px;
     font-size: 14px;
-    align-self: center;
 
     a {
-      color: #164863;
+      color: #164863; // Mörkblå för länkar
       text-decoration: none;
 
       &:hover {
