@@ -1,1 +1,12 @@
-/* Comment */
+.textBody {
+  width: 800px;
+  height: 750px;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+  border-radius: 5px;
+  border-style: solid;
+  background-color: #427D9D;
+  border-color: #427D9D;
+}
