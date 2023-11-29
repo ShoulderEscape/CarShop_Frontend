@@ -70,7 +70,7 @@
   .navbar {
     display: none;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     top: auto;
     width: 50%;
     align-items: center;
