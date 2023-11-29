@@ -1,1 +1,54 @@
-<p>filter works!</p>
+<div class="search-bar-container">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="searchButton"><img src="search-icon.png" alt="search-icon-image" class="search-icon"></button>
+    </div>
+</div>
+<div class="filter-button-container">
+    <button class="filter-button" (click)="showFilters()">Show Filters</button>
+
+</div>
+<div class="filter-container">
+    <div class="filter-range-container">
+        <label for="year_min">Year min: </label>
+        <input type="text" id="year_min" name="year_min" min="1900" max="2023">
+        <label for="year_max">Year max: </label>
+        <input type="text" id="year_max" name="year_max" min="1900" max="2023">
+    </div>
+    
+    <div class="filter-range-container">
+        <label for="mileage_min">Mileage min: </label>
+        <input type="text" id="mileage_min" name="mileage_min" min="0">
+        <label for="mileage_max">Mileage max: </label>
+        <input type="text" id="mileage_max" name="mileage_max" min="0">
+    </div>
+
+    <div class="filter-range-container">
+        <label for="price_min">Price min: </label>
+        <input type="text" id="price_min" name="price_min" min="0">
+        <label for="price_max">Price_max: </label>
+        <input type="text" id="price_max" name="price_max" min="0">
+    </div>
+    <div class="filter-range-container">
+        <label for="fuel-type">Fuel Type: </label>
+        <select id="fuel-type" name="fuel-type">
+            <option value="electric">Electric</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="hybrid">Hybrid</option>
+        </select>
+
+        <label for="transmission">Transmission: </label>
+        <div class="transmission-options">
+        <input type="button" id="automatic" name="transmission" value="automatic">
+
+        <input type="button" id="manual" name="transmission" value="manual">
+        </div>
+    </div>
+    
+    
+
+    
+
+    
+  </div>
