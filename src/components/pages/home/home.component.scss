@@ -1,4 +1,5 @@
 .article-container{
+    color:#9BBEC8;
     width: 100%;
     background-color: #164863;
     display: flex;
@@ -6,21 +7,40 @@
     >div{
         margin: 25%;
     }
+
+    img{
+        padding-left: 100px;
+    }
     .imagelink{
         width: 50%;
     }
-    .article {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px;
-        margin: 16px;
-        width: 300px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-      
-        > :nth-child(-n+2) {
-          width: 100%; 
-          margin-bottom: 8px; 
-        }
+    .description{
+        padding-top: 140px;
+        text-align: center;
     }
+    .brand{
+        font-weight: bold;
+        padding-left: 150px;
+    }
+    .model{
+        font-weight: bold;
+        padding-left: 250px;
+    }
+    .price{
+        color:#9BBEC8;
+        padding-top: 140px;
+        padding-left: 250px;
+
+    }
+    span{
+        position: absolute;
+        padding-left: 100px;
+        
+    }
+    .year, .mileage, .fuelType, .transmission, .contactName, .contactNumber{
+        display: none;
+    }
+    
+
 }
+

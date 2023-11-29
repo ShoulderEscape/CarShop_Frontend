@@ -23,13 +23,17 @@ export class HomeComponent implements OnInit {
 
         if (car.hasOwnProperty(property)) {
           var carPropertyElement;
+          let extratext= '';
+          if(property=="price"){
+            extratext='kr';
+          }
           if(property=="imagelink"){
             carPropertyElement = this.renderer.createElement('img');
             carPropertyElement.setAttribute('src', car[property]);            
             carPropertyElement.setAttribute('alt', "car article image")
           } else{
-            carPropertyElement = this.renderer.createElement('div');
-            carPropertyElement.textContent = `${car[property]}`;
+            carPropertyElement = this.renderer.createElement('span');
+            carPropertyElement.textContent = `${car[property]}`+' '+extratext;
           }
           carPropertyElement.classList.add(property);
 
@@ -58,8 +62,9 @@ export class HomeComponent implements OnInit {
         contactName: "Elizabeth", 
         contactNumber: "+46847514648", 
         price: 100000, 
-        imagelink: "/example-car.png",
-        description: "cool car" 
+        description: "cool car",
+        imagelink: "/example-car.png"
+
       },
       { 
         brand: 'Honda', 
@@ -71,8 +76,9 @@ export class HomeComponent implements OnInit {
         contactName: "Raymond", 
         contactNumber: "+46331433429", 
         price: 90000, 
-        imagelink: "/example-car.png",
-        description: "cooler car" 
+        description: "cooler car", 
+        imagelink: "/example-car.png"
+
       },
       { 
         brand: 'Ford', 
@@ -84,8 +90,9 @@ export class HomeComponent implements OnInit {
         contactName: "Rodney", 
         contactNumber: "+46403824633", 
         price: 120000, 
-        imagelink: "/example-car.png",
-        description: "coolest car" 
+        description: "coolest car", 
+        imagelink: "/example-car.png"
+
       },
     ];
   }
