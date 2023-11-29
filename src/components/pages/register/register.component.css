@@ -1,7 +1,7 @@
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   padding: 25px;
   margin: 40px auto;
@@ -12,33 +12,31 @@
   font-family: 'Arial', sans-serif;
 }
 
-.login-form label {
+.register-form label {
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
   color: #333;
-  align-self: start;
 }
 
-.login-form input {
+.register-form input {
   width: calc(100% - 24px);
   padding: 12px;
   margin-bottom: 20px;
   border: 2px solid #ddd;
   border-radius: 6px;
   font-size: 15px;
-  align-self: center;
 }
 
-.login-form input:focus {
+.register-form input:focus {
   border-color: #164863;
   box-shadow: 0 0 0 3px rgba(22, 72, 99, 0.2);
   outline: none;
 }
 
-.login-form button {
-  width: calc(100% - 24px);
+.register-form button {
+  width: 100%;
   padding: 12px 0;
   margin-top: 10px;
   border: none;
@@ -49,29 +47,27 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
-  align-self: center;
 }
 
-.login-form button:hover {
+.register-form button:hover {
   background-color: #0d2a39;
 }
 
-.login-form button:disabled {
+.register-form button:disabled {
   background-color: #1f668d;
   cursor: default;
 }
 
-.login-form .register-link {
+.register-form .register-link {
   margin-top: 20px;
   font-size: 14px;
-  align-self: center;
 }
 
-.login-form .register-link a {
+.register-form .register-link a {
   color: #164863;
   text-decoration: none;
 }
 
-.login-form .register-link a:hover {
+.register-form .register-link a:hover {
   text-decoration: underline;
 }
