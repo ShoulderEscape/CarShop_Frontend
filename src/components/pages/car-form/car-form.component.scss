@@ -1,1 +1,67 @@
-/* Comment */
+/* Grundläggande styling för formulärbehållaren */
+.car-sell-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Stil för etiketter */
+.car-sell-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Gemensam stil för textfält och textarea */
+.car-sell-container input[type="text"],
+.car-sell-container select,
+.car-sell-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Särskild stil för textarea */
+.car-sell-container textarea {
+  height: 120px;
+}
+
+/* Stil för filuppladdningsinput */
+.car-sell-container input[type="file"] {
+  margin-bottom: 15px;
+}
+
+/* Stil för skicka-knappen */
+.car-sell-container button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.car-sell-container button:hover {
+  background-color: #0056b3;
+}
+
+.car-sell-container button:disabled {
+  background-color: #cccccc;
+  cursor:not-allowed;
+}
+
+/* Stil för felmeddelanden (lägg till vid behov) */
+.car-sell-container .error {
+  color: #ff0000;
+  font-size: 0.9em;
+}
