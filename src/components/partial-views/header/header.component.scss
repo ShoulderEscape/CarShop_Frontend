@@ -1,6 +1,98 @@
-/* Comment */
-.navbar{
-    :last-child{
-        
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background-color: #9BBEC8;
+    border: 1px solid black;
+
+    > * {
+        float: right;
+        padding-right: 5%;
+
+        &:not(:first-child) {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            padding-left: 5%;
+
+            @media only screen and (min-width: 601px) {
+                &:hover {
+                    transition: background-color 0.6s;
+                    background-color: #164863;
+                    color: #9BBEC8;
+                }
+            }
+        }
+
+        &:first-child {
+            float: left;
+            margin-right: 10px;
+            padding-left: 2%;
+
+            > img {
+                height: 44px;
+            }
+        }
     }
 }
+.mobile-container{
+    display: none;
+}
+
+.menu-toggle span {
+    background: #333;
+    height: 3px;
+    width: 25px;
+    margin: 5px 0;
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile-container{
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding-left:5%;
+        padding-right: 30%;
+    }
+    #mobile-logo >*{
+        height:44px;
+    }
+    .navbar{
+        visibility: hidden;
+        flex-direction: column;
+        display: flex;
+        width: 50%;
+        align-items: center;
+        > *{
+            float: none;
+            padding: 10px;
+            margin-top: 20%;
+            margin-bottom: 20%;
+            
+            &:not(:first-child){
+                padding-left: 0;
+            }
+            &:first-child{
+                display: none;
+            }
+        }
+        
+    }
+    .visible {
+        visibility: visible !important;
+
+    }
+    
+    
+}
+
+
+
