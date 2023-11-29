@@ -15,13 +15,26 @@ export class HomeComponent implements OnInit {
     this.carFaker();
     let carContainer=document.getElementsByClassName("article-container")[0];
     this.cars.forEach(car => {
+
       let article=document.createElement("div");
       article.classList.add("article");
+
       for (const property in car) {
+
         if (car.hasOwnProperty(property)) {
-          const carPropertyElement = this.renderer.createElement('div');
-          carPropertyElement.textContent = `${car[property]}`;
+          var carPropertyElement;
+          if(property=="imagelink"){
+            carPropertyElement = this.renderer.createElement('img');
+            carPropertyElement.setAttribute('src', car[property]);            
+          } else{
+            carPropertyElement = this.renderer.createElement('div');
+            carPropertyElement.textContent = `${car[property]}`;
+          }
+          carPropertyElement.classList.add(property);
+
+          
           this.renderer.appendChild(article, carPropertyElement);
+
         }
       }
 
@@ -33,7 +46,6 @@ export class HomeComponent implements OnInit {
   }
 
   carFaker() {
-    // Assuming Car is a type or interface, not a class
     this.cars = [
       { 
         brand: 'Toyota', 
@@ -45,6 +57,7 @@ export class HomeComponent implements OnInit {
         contactName: "Elizabeth", 
         contactNumber: "+46847514648", 
         price: 100000, 
+        imagelink: "/example-car.png",
         description: "cool car" 
       },
       { 
@@ -57,6 +70,7 @@ export class HomeComponent implements OnInit {
         contactName: "Raymond", 
         contactNumber: "+46331433429", 
         price: 90000, 
+        imagelink: "/example-car.png",
         description: "cooler car" 
       },
       { 
@@ -69,6 +83,7 @@ export class HomeComponent implements OnInit {
         contactName: "Rodney", 
         contactNumber: "+46403824633", 
         price: 120000, 
+        imagelink: "/example-car.png",
         description: "coolest car" 
       },
     ];

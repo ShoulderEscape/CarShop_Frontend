@@ -29,6 +29,7 @@
               "src/favicon.ico",
               "src/logo.png",
               "src/search-icon.png",
+              "src/example-car.png",
               "src/assets"
             ],
             "styles": [
@@ -94,6 +95,7 @@
               "src/favicon.ico",
               "src/logo.png",
               "src/search-icon.png",
+              "src/example-car.png",
               "src/assets"
             ],
             "styles": [
