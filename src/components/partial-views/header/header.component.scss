@@ -68,9 +68,10 @@
         height:44px;
     }
     .navbar{
-        visibility: hidden;
+        display: none;
         flex-direction: column;
-        display: flex;
+        position: relative;
+        top:auto;
         width: 50%;
         align-items: center;
         > *{
@@ -89,7 +90,7 @@
         
     }
     .visible {
-        visibility: visible !important;
+        display: flex !important;
 
     }
     
