@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
           if(property=="imagelink"){
             carPropertyElement = this.renderer.createElement('img');
             carPropertyElement.setAttribute('src', car[property]);            
+            carPropertyElement.setAttribute('alt', "car article image")
           } else{
             carPropertyElement = this.renderer.createElement('div');
             carPropertyElement.textContent = `${car[property]}`;
