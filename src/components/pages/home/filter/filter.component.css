@@ -31,15 +31,18 @@
 .filter-button {
   justify-content: center;
   background-color: #9BBEC8;
-  margin-bottom: 0%;
-  padding-bottom: 0%;
+  padding: 1%;
+  cursor: pointer;
+  border-bottom: none;
+  border-top-right-radius: 1vh;
+  border-top-left-radius: 1vh;
 }
 
 .filter-container {
-  margin-top: 0%;
-  padding-top: 0%;
   display: none;
   background-color: #9BBEC8;
+  border-radius: 1vh;
+  margin: 0%;
 }
 
 .filter-container label {
