@@ -1,46 +1,49 @@
-.article-container{
-    color:#9BBEC8;
-    width: 100%;
-    background-color: #164863;
+.article-container {
     display: flex;
-    justify-content: center;
-    >div{
-        margin: 25%;
-    }
-
-    img{
-        padding-left: 100px;
-    }
-    .imagelink{
-        width: 50%;
-    }
-    .description{
-        padding-top: 140px;
-        text-align: center;
-    }
-    .brand{
-        font-weight: bold;
-        padding-left: 150px;
-    }
-    .model{
-        font-weight: bold;
-        padding-left: 250px;
-    }
-    .price{
-        color:#9BBEC8;
-        padding-top: 140px;
-        padding-left: 250px;
-
-    }
-    span{
-        position: absolute;
-        padding-left: 100px;
-        
-    }
-    .year, .mileage, .fuelType, .transmission, .contactName, .contactNumber{
-        display: none;
-    }
+    flex-wrap: wrap;
+    gap: 20px; 
     
+    .article {
+        width: calc(25% - 20px); 
+        box-sizing: border-box;
+        overflow: hidden;
 
-}
+        border: 5px solid #164863;
+        background-color: #427D9D;
 
+
+        @media screen and (max-width: 768px) {
+            width: calc(50% - 20px); 
+        }
+
+        @media screen and (max-width: 480px) {
+            width: calc(100% - 20px); 
+        }
+
+        .car-image{
+            width:100%;
+        }
+        .image-footer{
+            background-color: #164863;
+            width: 100%;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); // Two columns of equal width
+            grid-gap: 80px; // Adjust the gap between the columns
+
+        }
+        .title{
+            font-weight: bold;
+            font-size: x-large;
+            color: #DDF2FD;
+        }
+        .price{
+            font-size: x-large;
+
+            background-color: #164863;
+
+            color:#85bb65;
+        }
+    }
+  }
+  

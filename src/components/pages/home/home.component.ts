@@ -1,10 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2,ViewEncapsulation  } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  encapsulation: ViewEncapsulation.None // Add this line
 })
 export class HomeComponent implements OnInit {
   cars: Car[] = [];
@@ -19,31 +20,31 @@ export class HomeComponent implements OnInit {
       let article=document.createElement("div");
       article.classList.add("article");
 
-      for (const property in car) {
-
-        if (car.hasOwnProperty(property)) {
-          var carPropertyElement;
-          let extratext= '';
-          if(property=="price"){
-            extratext='kr';
-          }
-          if(property=="imagelink"){
-            carPropertyElement = this.renderer.createElement('img');
-            carPropertyElement.setAttribute('src', car[property]);            
-            carPropertyElement.setAttribute('alt', "car article image")
-          } else{
-            carPropertyElement = this.renderer.createElement('span');
-            carPropertyElement.textContent = `${car[property]}`+' '+extratext;
-          }
-          carPropertyElement.classList.add(property);
-
-          
-          this.renderer.appendChild(article, carPropertyElement);
-
-        }
-      }
+      
 
 
+      let image= document.createElement('img');
+      image.setAttribute('src', car.imagelink);
+      image.classList.add("car-image");
+      article.appendChild(image);
+
+      let imageFooter=document.createElement('div');
+      imageFooter.classList.add("image-footer")
+
+
+      let title = document.createElement('span');
+      title.textContent=car.brand+' '+car.model;
+      title.classList.add("title");
+      imageFooter.appendChild(title);
+
+      let price= document.createElement('span');
+      price.textContent=car.price+" kr";
+      price.classList.add("price");
+      imageFooter.appendChild(price);
+
+      article.appendChild(imageFooter);
+
+      
 
 
       carContainer.appendChild(article);
@@ -70,7 +71,7 @@ export class HomeComponent implements OnInit {
         brand: 'Honda', 
         model: 'Accord', 
         year: 2010, 
-        mileage: 100, 
+        mileage: 5, 
         fuelType: "diesel", 
         transmission: "manual", 
         contactName: "Raymond", 
@@ -84,7 +85,7 @@ export class HomeComponent implements OnInit {
         brand: 'Ford', 
         model: 'Mustang', 
         year: 1901, 
-        mileage: 100, 
+        mileage: 13, 
         fuelType: "hybrid", 
         transmission: "automatic", 
         contactName: "Rodney", 
@@ -94,6 +95,37 @@ export class HomeComponent implements OnInit {
         imagelink: "/example-car.png"
 
       },
+      { 
+         
+
+        brand: 'Toyota', 
+        model: 'Camry', 
+        year: 1020, 
+        mileage: 89, 
+        fuelType: "diesel", 
+        transmission: "manual", 
+        contactName: "Raymond", 
+        contactNumber: "+46331433429", 
+        price: 150000, 
+        description: "cooler car", 
+        imagelink: "/example-car.png"
+      },
+      {  
+
+        brand: 'Volkswagen', 
+        model: 'Golf', 
+        year: 1901, 
+        mileage: 61, 
+        fuelType: "hybrid", 
+        transmission: "automatic", 
+        contactName: "Rodney", 
+        contactNumber: "+46403824633", 
+        price: 86000, 
+        description: "coolest car", 
+        imagelink: "/example-car.png"
+
+      },
+
     ];
   }
 }
