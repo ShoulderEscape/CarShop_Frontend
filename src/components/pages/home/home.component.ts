@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
       mileage.textContent = `with ${car.mileage} miles mileage.`;
       article.appendChild(mileage);
 
+      const transmission = document.createElement('div');
+      transmission.textContent = `Transmission: ${car.transmission}`;
+      article.appendChild(transmission);
+
       carContainer.appendChild(article);
     });
   }
