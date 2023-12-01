@@ -1,157 +1,140 @@
-import { Component, OnInit, Renderer2,ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  encapsulation: ViewEncapsulation.None // Add this line
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit {
   cars: Car[] = [];
 
-  constructor(private renderer: Renderer2) {}
-  
   ngOnInit(): void {
     this.carFaker();
-    let carContainer=document.getElementsByClassName("article-container")[0];
-    this.cars.forEach(car => {
+    this.generateArticles();
+    
+  }
+  private generateArticles(): void{
+    const carContainer = document.getElementsByClassName('article-container')[0] as HTMLElement;
 
-      let article=document.createElement("div");
-      article.classList.add("article");
+    this.cars.forEach((car) => {
+      const article = document.createElement('div');
+      article.classList.add('article');
 
-      
-
-
-      let image= document.createElement('img');
+      const image = document.createElement('img');
       image.setAttribute('src', car.imagelink);
-      image.classList.add("car-image");
+      image.classList.add('car-image');
       article.appendChild(image);
 
-      let imageFooter=document.createElement('div');
-      imageFooter.classList.add("image-footer")
+      const imageFooter = document.createElement('div');
+      imageFooter.classList.add('image-footer');
 
-
-      let title = document.createElement('span');
-      title.textContent=car.brand+' '+car.model;
-      title.classList.add("title");
+      const title = document.createElement('span');
+      title.textContent = `${car.brand} ${car.model}`;
+      title.classList.add('title');
       imageFooter.appendChild(title);
 
-      let price= document.createElement('span');
-
-      let priceString=car.price+"";
-      let formattedPrice = priceString
-        .split('')
-        .reverse()
-        .reduce((result, char, index) => 
-        result + char + ((index + 1) % 3 
-        === 0 && index !== 
-        priceString.length - 1 ? ' ' : ''), '')
-        .split('')
-        .reverse()
-        .join('');
-
-      formattedPrice+=" kr";
-      
-      price.textContent=formattedPrice;
-      price.classList.add("price");
+      const price = document.createElement('span');
+      const formattedPrice = this.formatPrice(car.price);
+      price.textContent = `${formattedPrice} kr`;
+      price.classList.add('price');
       imageFooter.appendChild(price);
 
       article.appendChild(imageFooter);
 
-      
-      
-      let fuelType=document.createElement('span');
-
-      fuelType.textContent=car.fuelType.charAt(0).toUpperCase()+car.fuelType.slice(1)+" car ";
+      const fuelType = document.createElement('span');
+      fuelType.textContent = `${car.fuelType.charAt(0).toUpperCase() + car.fuelType.slice(1)} car `;
       article.appendChild(fuelType);
 
-      let mileage= document.createElement('span');
-
-      mileage.textContent="with "+car.mileage + " miles mileage.";
+      const mileage = document.createElement('span');
+      mileage.textContent = `with ${car.mileage} miles mileage.`;
       article.appendChild(mileage);
-      
-
 
       carContainer.appendChild(article);
     });
   }
 
+  private formatPrice(price: number): string {
+    const priceString = price.toString();
+    return priceString
+      .split('')
+      .reverse()
+      .reduce((result, char, index) => (result + char + ((index + 1) % 3 === 0 && index !== priceString.length - 1 ? ' ' : '')), '')
+      .split('')
+      .reverse()
+      .join('');
+  }
+
   carFaker() {
     this.cars = [
-      { 
-        brand: 'Toyota', 
-        model: 'Camry', 
-        year: 2022, 
-        mileage: 100, 
-        fuelType: "electric", 
-        transmission: "automatic", 
-        contactName: "Elizabeth", 
-        contactNumber: "+46847514648", 
-        price: 100000, 
-        description: "cool car",
-        imagelink: "/example-car.png"
-
+      {
+        brand: 'Toyota',
+        model: 'Camry',
+        year: 2022,
+        mileage: 100,
+        fuelType: 'electric',
+        transmission: 'automatic',
+        contactName: 'Elizabeth',
+        contactNumber: '+46847514648',
+        price: 100000,
+        description: 'cool car',
+        imagelink: '/example-car.png',
       },
-      { 
-        brand: 'Honda', 
-        model: 'Accord', 
-        year: 2010, 
-        mileage: 5, 
-        fuelType: "diesel", 
-        transmission: "manual", 
-        contactName: "Raymond", 
-        contactNumber: "+46331433429", 
-        price: 1000000, 
-        description: "cooler car", 
-        imagelink: "/example-car.png"
-
+      {
+        brand: 'Honda',
+        model: 'Accord',
+        year: 2010,
+        mileage: 5,
+        fuelType: 'diesel',
+        transmission: 'manual',
+        contactName: 'Raymond',
+        contactNumber: '+46331433429',
+        price: 1000000,
+        description: 'cooler car',
+        imagelink: '/example-car.png',
       },
-      { 
-        brand: 'Ford', 
-        model: 'Mustang', 
-        year: 1901, 
-        mileage: 13, 
-        fuelType: "hybrid", 
-        transmission: "automatic", 
-        contactName: "Rodney", 
-        contactNumber: "+46403824633", 
-        price: 120000, 
-        description: "coolest car", 
-        imagelink: "/example-car.png"
-
+      {
+        brand: 'Ford',
+        model: 'Mustang',
+        year: 1901,
+        mileage: 13,
+        fuelType: 'hybrid',
+        transmission: 'automatic',
+        contactName: 'Rodney',
+        contactNumber: '+46403824633',
+        price: 120000,
+        description: 'coolest car',
+        imagelink: '/example-car.png',
       },
-      { 
-         
-
-        brand: 'Toyota', 
-        model: 'Camry', 
-        year: 1020, 
-        mileage: 89, 
-        fuelType: "diesel", 
-        transmission: "manual", 
-        contactName: "Raymond", 
-        contactNumber: "+46331433429", 
-        price: 150000, 
-        description: "cooler car", 
-        imagelink: "/example-car.png"
+      {
+        brand: 'Toyota',
+        model: 'Camry',
+        year: 1020,
+        mileage: 89,
+        fuelType: 'diesel',
+        transmission: 'manual',
+        contactName: 'Raymond',
+        contactNumber: '+46331433429',
+        price: 150000,
+        description: 'cooler car',
+        imagelink: '/example-car.png',
       },
-      {  
-
-        brand: 'Volkswagen', 
-        model: 'Golf', 
-        year: 1901, 
-        mileage: 61, 
-        fuelType: "hybrid", 
-        transmission: "automatic", 
-        contactName: "Rodney", 
-        contactNumber: "+46403824633", 
-        price: 86000, 
-        description: "coolest car", 
-        imagelink: "/example-car.png"
-
+      {
+        brand: 'Volkswagen',
+        model: 'Golf',
+        year: 1901,
+        mileage: 61,
+        fuelType: 'hybrid',
+        transmission: 'automatic',
+        contactName: 'Rodney',
+        contactNumber: '+46403824633',
+        price: 86000,
+        description: 'coolest car',
+        imagelink: '/example-car.png',
       },
-
     ];
   }
+
+  
 }
