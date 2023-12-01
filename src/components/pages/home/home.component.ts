@@ -38,12 +38,38 @@ export class HomeComponent implements OnInit {
       imageFooter.appendChild(title);
 
       let price= document.createElement('span');
-      price.textContent=car.price+" kr";
+
+      let priceString=car.price+"";
+      let formattedPrice = priceString
+        .split('')
+        .reverse()
+        .reduce((result, char, index) => 
+        result + char + ((index + 1) % 3 
+        === 0 && index !== 
+        priceString.length - 1 ? ' ' : ''), '')
+        .split('')
+        .reverse()
+        .join('');
+
+      formattedPrice+=" kr";
+      
+      price.textContent=formattedPrice;
       price.classList.add("price");
       imageFooter.appendChild(price);
 
       article.appendChild(imageFooter);
 
+      
+      
+      let fuelType=document.createElement('span');
+
+      fuelType.textContent=car.fuelType.charAt(0).toUpperCase()+car.fuelType.slice(1)+" car ";
+      article.appendChild(fuelType);
+
+      let mileage= document.createElement('span');
+
+      mileage.textContent="with "+car.mileage + " miles mileage.";
+      article.appendChild(mileage);
       
 
 
@@ -76,7 +102,7 @@ export class HomeComponent implements OnInit {
         transmission: "manual", 
         contactName: "Raymond", 
         contactNumber: "+46331433429", 
-        price: 90000, 
+        price: 1000000, 
         description: "cooler car", 
         imagelink: "/example-car.png"
 
