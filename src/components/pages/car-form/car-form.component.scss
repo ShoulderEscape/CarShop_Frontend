@@ -2,10 +2,10 @@
 .car-sell-container {
   max-width: 600px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 50px;
   background-color: #f8f8f8;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0.1, 0.5);
   font-family: 'Arial', sans-serif;
 }
 
@@ -18,7 +18,7 @@
 }
 
 /* Gemensam stil för textfält och textarea */
-.car-sell-container input[type="text"],
+.car-sell-container input[type="text"], 
 .car-sell-container select,
 .car-sell-container textarea {
   width: 100%;
@@ -27,6 +27,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+  resize: none;
 }
 
 /* Särskild stil för textarea */
@@ -37,6 +38,7 @@
 /* Stil för filuppladdningsinput */
 .car-sell-container input[type="file"] {
   margin-bottom: 15px;
+  
 }
 
 /* Stil för skicka-knappen */
