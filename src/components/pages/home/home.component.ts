@@ -70,7 +70,12 @@ export class HomeComponent implements OnInit {
       .join('');
   }
 
-  carFaker() {
+  handleFilterChange(data: any){
+
+  }
+
+
+  private carFaker() {
     this.cars = [
       {
         brand: 'Toyota',

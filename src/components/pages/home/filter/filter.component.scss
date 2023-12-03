@@ -42,6 +42,12 @@
 
 
 }
+#errormessages{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: red;
+}
 
 
 .filter-container {
@@ -82,6 +88,9 @@
         input {
             margin-right: 8px;
         }
+    }
+    input{
+        width:50%;
     }
     
 
