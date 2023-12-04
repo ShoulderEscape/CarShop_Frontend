@@ -10,4 +10,6 @@ export interface Car {
   contactNumber: string;
   price: number;
   description?: string;
+  imagelink: string;
+
 }
