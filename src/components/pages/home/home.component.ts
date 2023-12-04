@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
+import { Filter } from 'src/app/models/filter.model';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,26 @@ import { Car } from 'src/app/models/car.model';
 })
 export class HomeComponent implements OnInit {
   cars: Car[] = [];
+  filter?: Filter; 
 
   ngOnInit(): void {
     this.carFaker();
     this.generateArticles();
     
   }
+  
+
+  handleFilterChange(filterData: [string, string][]): void {
+    const listOfIdsThatHaveNumberValues=["year-min", "year-max", "mileage-min", "mileage-max", "price-min", "price-max"];
+    listOfIdsThatHaveNumberValues.forEach(ID => {
+      filterData.forEach(element => {
+        if(element[0]===ID){
+          console.log(ID);
+        }
+      });
+    });
+  }
+
   private generateArticles(): void{
     const carContainer = document.getElementsByClassName('article-container')[0] as HTMLElement;
 
@@ -70,10 +85,7 @@ export class HomeComponent implements OnInit {
       .join('');
   }
 
-  handleFilterChange(data: any){
-
-  }
-
+  
 
   private carFaker() {
     this.cars = [

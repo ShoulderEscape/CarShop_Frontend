@@ -23,9 +23,20 @@ export class FilterComponent {
 
     @Output() filterTransfer: EventEmitter<any> = new EventEmitter();
 
-    sendFilterDataToHome(){
-      this.filterTransfer.emit() //add filter data
+    sendFilterDataToHome(filterData: any[]): void {
+      let filterValues: [string, string][] = [];
+    
+      filterData.forEach(element => {
+        if (element && typeof element.value === 'string') {
+          let objectId = element.id || ''; 
+          filterValues.push([objectId, element.value]);
+        }
+      });
+    
+      this.filterTransfer.emit(filterValues);
     }
+    
+    
 
     changeTransmission(activeButtonId: string, disabledButtonIds: string[]): void {
       document.getElementById(activeButtonId)?.setAttribute("disabled", 'true');
@@ -49,13 +60,13 @@ export class FilterComponent {
     
     
     filterChanged(){
-      const yearMin=document.getElementById("year_min");
-      const yearMax=document.getElementById("year_max");
-      const mileageMin=document.getElementById("mileage_min");
-      const mileageMax=document.getElementById("mileage_max");
-      const priceMin=document.getElementById("price_min");
-      const priceMax=document.getElementById("price_max");
-      const fuelType=document.getElementById("fuel_type");
+      const yearMin=document.getElementById("year-min");
+      const yearMax=document.getElementById("year-max");
+      const mileageMin=document.getElementById("mileage-min");
+      const mileageMax=document.getElementById("mileage-max");
+      const priceMin=document.getElementById("price-min");
+      const priceMax=document.getElementById("price-max");
+      const fuelType=document.getElementById("fuel-type");
       let transmission;
       let transmissionOptions=['automatic', 'any', 'manual'];
       transmissionOptions.forEach(element => {
@@ -74,22 +85,16 @@ export class FilterComponent {
       this.ValidateMinIsLowerThanMax(mileageMin, mileageMax);
       this.ValidateMinIsLowerThanMax(priceMin, priceMax);
 
+     
       
-
-      /*
-      const data: Filter = {
-        yearMin: yearMin,
-        yearMax: yearMax,
-        mileageMin: mileageMin,
-        mileageMax: mileageMax,
-        priceMin: priceMin,
-        priceMax: priceMax,
-        fuelType: fuelType,
-        transmission: transmission,
-      };
-      */
+      if (errorLocation){
+        console.log("hello")
+        if(errorLocation.innerHTML=' '){
+          this.sendFilterDataToHome([yearMin, yearMax, mileageMin, mileageMax, priceMin, priceMax, fuelType, transmission]);
+  
+        }
+      }
       
-      this.sendFilterDataToHome()
 
 
       
@@ -143,6 +148,7 @@ export class FilterComponent {
 
 
     }
+
 
 
 
