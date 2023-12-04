@@ -72,7 +72,7 @@ export class FilterComponent {
         mileageMax, priceMin, priceMax]);
       this.ValidateMinIsLowerThanMax(yearMin, yearMax);
       this.ValidateMinIsLowerThanMax(mileageMin, mileageMax);
-      this.ValidateMinIsLowerThanMax(priceMin, priceMin);
+      this.ValidateMinIsLowerThanMax(priceMin, priceMax);
 
       
 

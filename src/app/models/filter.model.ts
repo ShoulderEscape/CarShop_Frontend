@@ -7,8 +7,6 @@ export interface Filter {
     priceMin: number;
     priceMax: number;
     fuelType: string;
-    transmission: string;
-
-  
+    transmission: string;  
   }
   
