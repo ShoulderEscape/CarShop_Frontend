@@ -138,9 +138,13 @@ export class HomeComponent implements OnInit {
     for(const specificFilter in this.filter){
       if (Object.prototype.hasOwnProperty.call(this.filter, specificFilter)) {
         const value = this.filter[specificFilter];
-        if(isNaN(value)){
+        console.log(value);
+        if(value===null){
+          console.log("here")
           continue;
         }
+        console.log(specificFilter);
+
         switch(specificFilter){
           case("yearMin"):
             if(car.year<value)
