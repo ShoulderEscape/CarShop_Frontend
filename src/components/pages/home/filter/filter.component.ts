@@ -52,7 +52,7 @@ export class FilterComponent {
       disabledButtonIds.forEach((buttonId) => {
         document.getElementById(buttonId)?.removeAttribute("disabled");
       });
-     this.filterChanged(); 
+      this.filterChanged(); 
     }
     
     setAny(): void {
