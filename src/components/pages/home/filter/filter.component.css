@@ -38,6 +38,13 @@
   border-top-left-radius: 1vh;
 }
 
+#errormessages {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: red;
+}
+
 .filter-container {
   display: none;
   background-color: #9BBEC8;
@@ -74,6 +81,10 @@
 
 .filter-container .transmission-options input {
   margin-right: 8px;
+}
+
+.filter-container input {
+  width: 50%;
 }
 
 .filter-button-container {

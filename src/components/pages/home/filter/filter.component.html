@@ -9,29 +9,32 @@
 
 </div>
 <div class="filter-container">
+    <div id="errormessages"></div>
+
     <div class="filter-range-container">
         <label for="year_min">Year min: </label>
-        <input type="text" id="year_min" name="year_min" min="1900" max="2023">
+        <input type="text" id="year-min" name="year_min" min="1900" max="2023" (change)="filterChanged()">
         <label for="year_max">Year max: </label>
-        <input type="text" id="year_max" name="year_max" min="1900" max="2023">
+        <input type="text" id="year-max" name="year_max" min="1900" max="2023" (change)="filterChanged()">
     </div>
     
     <div class="filter-range-container">
         <label for="mileage_min">Mileage min: </label>
-        <input type="text" id="mileage_min" name="mileage_min" min="0">
+        <input type="text" id="mileage-min" name="mileage_min" min="0" (change)="filterChanged()">
         <label for="mileage_max">Mileage max: </label>
-        <input type="text" id="mileage_max" name="mileage_max" min="0">
+        <input type="text" id="mileage-max" name="mileage_max" min="0" (change)="filterChanged()">
     </div>
 
     <div class="filter-range-container">
         <label for="price_min">Price min: </label>
-        <input type="text" id="price_min" name="price_min" min="0">
-        <label for="price_max">Price_max: </label>
-        <input type="text" id="price_max" name="price_max" min="0">
+        <input type="text" id="price-min" name="price_min" min="0" (change)="filterChanged()">
+        <label for="price_max">Price max: </label>
+        <input type="text" id="price-max" name="price_max" min="0" (change)="filterChanged()">
     </div>
     <div class="filter-range-container">
         <label for="fuel-type">Fuel Type: </label>
-        <select id="fuel-type" name="fuel-type">
+        <select id="fuel-type" name="fuel-type"  (change)="filterChanged()">
+            <option value="any">Any</option>
             <option value="electric">Electric</option>
             <option value="petrol">Petrol</option>
             <option value="diesel">Diesel</option>
@@ -40,9 +43,11 @@
 
         <label for="transmission">Transmission: </label>
         <div class="transmission-options">
-        <input type="button" id="automatic" name="transmission" value="automatic">
+        <input type="button" id="any" name="transmission" value="any" (click)="setAny()" disabled>
 
-        <input type="button" id="manual" name="transmission" value="manual">
+        <input type="button" id="automatic" name="transmission" value="automatic" (click)="setAuto()">
+
+        <input type="button" id="manual" name="transmission" value="manual" (click)="setManual()">
         </div>
     </div>
     
