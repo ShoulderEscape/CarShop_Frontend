@@ -147,27 +147,27 @@ export class HomeComponent implements OnInit {
               return false;
           break;
           case("yearMax"):
-            if(car.year>parseInt(value))
+            if(car.year>value)
               return false;
 
           break;
           case("mileageMin"):
-            if(car.mileage<parseInt(value))
+            if(car.mileage<value)
               return false;
 
           break;
           case("mileageMax"):
-            if(car.mileage>parseInt(value))
+            if(car.mileage>value)
                 return false;
 
           break;
           case("priceMin"):
-            if(car.price<parseInt(value))
+            if(car.price<value)
                 return false;
 
           break;
           case("priceMax"):
-            if(car.price>parseInt(value))
+            if(car.price>value)
                 return false;
 
           break;
