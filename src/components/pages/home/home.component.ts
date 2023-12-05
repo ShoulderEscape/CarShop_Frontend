@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     
   }
   applyFilterChangesToShownArticles(thisFilter: [string, string]){
+  
     if(this.filter){
       switch(thisFilter[0]){
         case ("year-min"):
@@ -140,7 +141,6 @@ export class HomeComponent implements OnInit {
         const value = this.filter[specificFilter];
         console.log(value);
         if(value===null){
-          console.log("here")
           continue;
         }
         console.log(specificFilter);

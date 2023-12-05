@@ -27,9 +27,17 @@ export class FilterComponent {
       let filterValues: [string, string][] = [];
     
       filterData.forEach(element => {
+        let tempID;
+        if (element.id=="automatic" || element.id=="any" || element.id=="manual"){
+          tempID=element.id;
+          element.setAttribute("id", "transmission");
+        }
         if (element && typeof element.value === 'string') {
           let objectId = element.id || ''; 
           filterValues.push([objectId, element.value]);
+          if(tempID){
+            element.setAttribute("id", tempID);
+          }
         }
       });
     
@@ -44,6 +52,7 @@ export class FilterComponent {
       disabledButtonIds.forEach((buttonId) => {
         document.getElementById(buttonId)?.removeAttribute("disabled");
       });
+     this.filterChanged(); 
     }
     
     setAny(): void {
@@ -71,9 +80,10 @@ export class FilterComponent {
       let transmissionOptions=['automatic', 'any', 'manual'];
       transmissionOptions.forEach(element => {
         if(document.getElementById(element)?.getAttribute('disabled')){
-          transmission=element;
+          transmission=document.getElementById(element);
         }
       });
+      
       const errorLocation=document.getElementById("errormessages");
       if(errorLocation){
         errorLocation.innerHTML='';
@@ -89,6 +99,10 @@ export class FilterComponent {
       
       if (errorLocation){
         if(errorLocation.innerHTML==''){
+
+          if(transmission){
+
+          }
           this.sendFilterDataToHome([yearMin, yearMax, mileageMin, mileageMax, priceMin, priceMax, fuelType, transmission]);
   
         }
