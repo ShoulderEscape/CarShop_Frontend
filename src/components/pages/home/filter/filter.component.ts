@@ -114,6 +114,13 @@ export class FilterComponent {
 
 
     }
+    search(){
+      const searchElement=document.getElementById("searchInput") as HTMLInputElement;
+
+      if(searchElement){
+        let searchInput=searchElement.value;
+      }
+    }
     ValidateMinIsLowerThanMax(min: any, max: any) {
       let addedToErrors = '';
     
