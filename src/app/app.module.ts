@@ -13,6 +13,7 @@ import { HomeComponent } from 'src/components/pages/home/home.component';
 import { FilterComponent } from 'src/components/pages/home/filter/filter.component'; 
 import { LoginComponent } from 'src/components/pages/login/login.component'; 
 import { ProfileComponent } from 'src/components/pages/profile/profile.component'; 
+import { SearchComponent } from 'src/components/pages/home/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileComponent } from 'src/components/pages/profile/profile.component
     FilterComponent,
     LoginComponent,
     ProfileComponent,
+    SearchComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
