@@ -88,8 +88,7 @@ export class FilterComponent {
      
       
       if (errorLocation){
-        console.log("hello")
-        if(errorLocation.innerHTML=' '){
+        if(errorLocation.innerHTML==''){
           this.sendFilterDataToHome([yearMin, yearMax, mileageMin, mileageMax, priceMin, priceMax, fuelType, transmission]);
   
         }
