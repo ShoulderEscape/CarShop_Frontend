@@ -130,6 +130,78 @@ describe('HomeComponent', () => {
       expect(article.querySelector('.car-image').getAttribute('src')).toBe(car.imagelink);
     });
   });
+  it('should return true if no filters are set', () => {
+    // Create a mock car with arbitrary values
+    const car: Car = {
+      brand: 'Toyota',
+      model: 'Camry',
+      year: 2020,
+      mileage: 50000,
+      fuelType: 'Petrol',
+      transmission: 'Automatic',
+      contactName: 'John Doe',
+      contactNumber: 1234567890,
+      price: 25000,
+      imagelink: 'path/to/image.jpg',
+      auctionDateTime: '2023-01-01T12:00:00',
+    };
+
+    // Set filter to an empty object
+    component.filter = {};
+
+    // Call the method
+    const result = component.doesArticleFitInFilter(car);
+
+    // Expect the result to be true since no filters are set
+    expect(result).toBe(true);
+  });
+
+  it('should return false if car year is less than yearMin filter', () => {
+    const car: Car = { brand: 'Toyota', model: 'Camry', year: 2019, mileage:0, fuelType:"diesel", transmission:"Automatic", contactName:"Jonah", price:791273, contactNumber:123, auctionDateTime:"iuhiah", imagelink:"auyd"};
+    component.filter = { yearMin: 2020 };
+
+    const result = component.doesArticleFitInFilter(car);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return false if car year is greater than yearMax filter', () => {
+    const car: Car = { brand: 'Toyota', model: 'Camry', year: 2021, mileage:0, fuelType:"diesel", transmission:"Automatic", contactName:"Jonah", price:791273, contactNumber:123, auctionDateTime:"iuhiah", imagelink:"auyd" };
+    component.filter = { yearMax: 2020 };
+
+    const result = component.doesArticleFitInFilter(car);
+
+    expect(result).toBe(false);
+  });
+
+
+  it('should return true if car passes all filter conditions', () => {
+    const car: Car = {
+      brand: 'Toyota',
+      model: 'Camry',
+      year: 2020,
+      mileage: 50000,
+      fuelType: 'Petrol',
+      transmission: 'Automatic',
+      contactName: 'John Doe',
+      contactNumber: 1234567890,
+      price: 25000,
+      imagelink: 'path/to/image.jpg',
+      auctionDateTime: '2023-01-01T12:00:00',
+    };
+
+    component.filter = {
+      yearMin: 2000,
+      yearMax: 2030,
+    };
+
+    const result = component.doesArticleFitInFilter(car);
+
+    expect(result).toBe(true);
+  });
+
+  
+  
   
 
  
