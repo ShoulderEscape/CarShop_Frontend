@@ -10,6 +10,6 @@ export interface Car {
   contactNumber: number;
   price: number;
   description?: string;
-  imagelink: string;
-  auctionDateTime: Date;
+  imagelink?: string;
+  auctionDateTime: string;
 }
