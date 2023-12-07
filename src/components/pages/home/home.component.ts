@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { exhaustAll, filter } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Filter } from 'src/app/models/filter.model';
+import { ArticleService } from 'src/app/services/ArticleService';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,21 @@ export class HomeComponent implements OnInit {
   cars: Car[] = [];
   filter: Filter=[];
 
+
   ERROR_MESSAGE_ABOUT_MISSING_FILTER_FUNCTIONS="There is no filter functionality about this filter, please inform us of this problem, and we will fix it";
   
+  constructor(private articleService: ArticleService){}
 
   ngOnInit(): void {
-    this.carFaker();
-    this.generateArticles();
-    
+    this.articleService.getArticles().subscribe(
+      (response) => {
+        this.cars = response;
+        console.log(this.cars);
+        this.generateArticles();
+      },
+      (error) => {
+        console.error(error);
+      })
   }
   applyFilterChangesToShownArticles(thisFilter: [string, string]){
   
@@ -208,74 +217,5 @@ export class HomeComponent implements OnInit {
       .split('')
       .reverse()
       .join('');
-  }
-  private carFaker() {
-    this.cars = [
-      {
-        brand: 'Toyota',
-        model: 'Camry',
-        year: 2022,
-        mileage: 100,
-        fuelType: 'electric',
-        transmission: 'automatic',
-        contactName: 'Elizabeth',
-        contactNumber: '+46847514648',
-        price: 100000,
-        description: 'cool car',
-        imagelink: '/example-car.png',
-      },
-      {
-        brand: 'Honda',
-        model: 'Accord',
-        year: 2010,
-        mileage: 5,
-        fuelType: 'diesel',
-        transmission: 'manual',
-        contactName: 'Raymond',
-        contactNumber: '+46331433429',
-        price: 1000000,
-        description: 'cooler car',
-        imagelink: '/example-car.png',
-      },
-      {
-        brand: 'Ford',
-        model: 'Mustang',
-        year: 1901,
-        mileage: 13,
-        fuelType: 'hybrid',
-        transmission: 'automatic',
-        contactName: 'Rodney',
-        contactNumber: '+46403824633',
-        price: 120000,
-        description: 'coolest car',
-        imagelink: '/example-car.png',
-      },
-      {
-        brand: 'Toyota',
-        model: 'Camry',
-        year: 1020,
-        mileage: 89,
-        fuelType: 'diesel',
-        transmission: 'manual',
-        contactName: 'Raymond',
-        contactNumber: '+46331433429',
-        price: 150000,
-        description: 'cooler car',
-        imagelink: '/example-car.png',
-      },
-      {
-        brand: 'Volkswagen',
-        model: 'Golf',
-        year: 1901,
-        mileage: 61,
-        fuelType: 'hybrid',
-        transmission: 'automatic',
-        contactName: 'Rodney',
-        contactNumber: '+46403824633',
-        price: 86000,
-        description: 'coolest car',
-        imagelink: '/example-car.png',
-      },
-    ];
   }
 }

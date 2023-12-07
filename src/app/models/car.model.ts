@@ -7,9 +7,9 @@ export interface Car {
   fuelType: string;
   transmission: string;
   contactName: string;
-  contactNumber: string;
+  contactNumber: number;
   price: number;
   description?: string;
   imagelink: string;
-
+  auctionDateTime: string;
 }
