@@ -11,5 +11,5 @@ export interface Car {
   price: number;
   description?: string;
   imagelink: string;
-  auctionDateTime: string;
+  auctionDateTime: Date;
 }
