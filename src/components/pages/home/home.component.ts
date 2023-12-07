@@ -130,8 +130,10 @@ export class HomeComponent implements OnInit {
       fuelType.textContent = `${car.fuelType.charAt(0).toUpperCase() + car.fuelType.slice(1)} car `;
       article.appendChild(fuelType);
 
+      console.log(car.mileAge);
+
       const mileage = document.createElement('span');
-      mileage.textContent = `with ${car.mileage} miles mileage.`;
+      mileage.textContent = `with ${car.mileAge} miles mileage.`;
       article.appendChild(mileage);
 
       const transmission = document.createElement('div');
@@ -165,12 +167,12 @@ export class HomeComponent implements OnInit {
 
           break;
           case("mileageMin"):
-            if(car.mileage<value)
+            if(car.mileAge<value)
               return false;
 
           break;
           case("mileageMax"):
-            if(car.mileage>value)
+            if(car.mileAge>value)
                 return false;
 
           break;

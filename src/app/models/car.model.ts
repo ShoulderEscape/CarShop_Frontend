@@ -3,7 +3,7 @@ export interface Car {
   brand: string;
   model: string;
   year: number;
-  mileage: number;
+  mileAge: number;
   fuelType: string;
   transmission: string;
   contactName: string;
