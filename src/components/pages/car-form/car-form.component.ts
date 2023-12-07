@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CreateArticleService } from 'src/app/services/ArticleService';
 import { Car } from 'src/app/models/car.model';
 
 @Component({
@@ -11,7 +12,7 @@ export class CarFormComponent implements OnInit {
   carForm: FormGroup;
   selectedFiles: File[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private createArticleService: CreateArticleService) {
     this.carForm = this.formBuilder.group({});
   }
 
@@ -67,6 +68,17 @@ export class CarFormComponent implements OnInit {
         }
       }
       // Skicka formData till server här
+      this.createArticleService.CreateArticle(formData).subscribe(
+        (response) => {
+          console.log('Success:', response);
+         
+        },
+        (error) => {
+          console.error('Error:', error);
+          
+        });
+     
+
     }
   }
 }
