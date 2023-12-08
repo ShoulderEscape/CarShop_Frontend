@@ -89,20 +89,20 @@ describe('HomeComponent', () => {
         brand: 'Toyota',
         model: 'Camry',
         year: 2020,
-        mileage: 50000,
+        mileAge: 50000,
         fuelType: 'Petrol',
         transmission: 'Automatic',
         contactName: 'John Doe',
         contactNumber: 1234567890,
         price: 25000,
         imagelink: 'path/to/image.jpg',
-        auctionDateTime: '2023-01-01T12:00:00',
+        auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
       },
       {
         brand: 'Honda',
         model: 'Civic',
         year: 2019,
-        mileage: 40000,
+        mileAge: 40000,
         fuelType: 'Gasoline',
         transmission: 'Manual',
         contactName: 'Alice Smith',
@@ -110,7 +110,7 @@ describe('HomeComponent', () => {
         price: 20000,
         description: 'Well-maintained, low mileage car.',
         imagelink: 'path/to/another-image.jpg',
-        auctionDateTime: '2023-02-01T14:30:00',
+        auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
       }
       
     ];
@@ -136,14 +136,14 @@ describe('HomeComponent', () => {
       brand: 'Toyota',
       model: 'Camry',
       year: 2020,
-      mileage: 50000,
+      mileAge: 50000,
       fuelType: 'Petrol',
       transmission: 'Automatic',
       contactName: 'John Doe',
       contactNumber: 1234567890,
       price: 25000,
       imagelink: 'path/to/image.jpg',
-      auctionDateTime: '2023-01-01T12:00:00',
+      auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
     };
 
     // Set filter to an empty object
@@ -157,7 +157,18 @@ describe('HomeComponent', () => {
   });
 
   it('should return false if car year is less than yearMin filter', () => {
-    const car: Car = { brand: 'Toyota', model: 'Camry', year: 2019, mileage:0, fuelType:"diesel", transmission:"Automatic", contactName:"Jonah", price:791273, contactNumber:123, auctionDateTime:"iuhiah", imagelink:"auyd"};
+    const car: Car = { 
+      brand: 'Toyota', 
+      model: 'Camry', 
+      year: 2019, 
+      mileAge:0, 
+      fuelType:"diesel", 
+      transmission:"Automatic", 
+      contactName:"Jonah", 
+      price:791273, 
+      contactNumber:123, 
+      auctionDateTime:new Date(2023, 11, 8, 14, 30, 0), 
+      imagelink:"auyd"};
     component.filter = { yearMin: 2020 };
 
     const result = component.doesArticleFitInFilter(car);
@@ -166,7 +177,18 @@ describe('HomeComponent', () => {
   });
 
   it('should return false if car year is greater than yearMax filter', () => {
-    const car: Car = { brand: 'Toyota', model: 'Camry', year: 2021, mileage:0, fuelType:"diesel", transmission:"Automatic", contactName:"Jonah", price:791273, contactNumber:123, auctionDateTime:"iuhiah", imagelink:"auyd" };
+    const car: Car = { 
+      brand: 'Toyota', 
+      model: 'Camry', 
+      year: 2021, 
+      mileAge:0, 
+      fuelType:"diesel", 
+      transmission:"Automatic", 
+      contactName:"Jonah", 
+      price:791273, 
+      contactNumber:123, 
+      auctionDateTime:new Date(2023, 11, 8, 14, 30, 0), 
+      imagelink:"auyd" };
     component.filter = { yearMax: 2020 };
 
     const result = component.doesArticleFitInFilter(car);
@@ -180,14 +202,14 @@ describe('HomeComponent', () => {
       brand: 'Toyota',
       model: 'Camry',
       year: 2020,
-      mileage: 50000,
+      mileAge: 50000,
       fuelType: 'Petrol',
       transmission: 'Automatic',
       contactName: 'John Doe',
       contactNumber: 1234567890,
       price: 25000,
       imagelink: 'path/to/image.jpg',
-      auctionDateTime: '2023-01-01T12:00:00',
+      auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
     };
 
     component.filter = {
