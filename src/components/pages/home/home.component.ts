@@ -92,7 +92,7 @@ export class HomeComponent implements OnInit {
     
   }
 
-  private generateArticles(): void{
+  generateArticles(): void{
     const carContainer = document.getElementsByClassName('article-container')[0] as HTMLElement;
     while (carContainer.firstChild) {
       carContainer.removeChild(carContainer.firstChild);
@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit {
       carContainer.appendChild(article);
     });
   }
-  private doesArticleFitInFilter(car:Car):boolean
+  doesArticleFitInFilter(car:Car):boolean
   {
     
 
@@ -210,7 +210,7 @@ export class HomeComponent implements OnInit {
     return true;
 
   }
-  private formatPrice(price: number): string {
+  formatPrice(price: number): string {
     const priceString = price.toString();
     return priceString
       .split('')
