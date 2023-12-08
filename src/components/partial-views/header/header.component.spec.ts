@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { By } from '@angular/platform-browser';
+
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -17,5 +19,27 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should toggle "visible" class on menu toggle click', fakeAsync(() => {
+    const navbar = fixture.debugElement.query(By.css('.navbar')).nativeElement;
+    expect(navbar.classList.contains('visible')).toBe(false);
+
+    const menuToggle = fixture.debugElement.query(By.css('#mobile-menu')).nativeElement;
+    menuToggle.click();
+    tick();
+    fixture.detectChanges();
+
+    expect(navbar.classList.contains('visible')).toBe(true);
+
+    menuToggle.click();
+    tick();
+    fixture.detectChanges();
+
+    expect(navbar.classList.contains('visible')).toBe(false);
+  }));
+
+
+  afterEach(() => {
+    fixture.destroy();
   });
 });
