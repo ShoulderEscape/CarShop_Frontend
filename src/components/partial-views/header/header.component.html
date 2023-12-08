@@ -10,7 +10,8 @@
 
 <div class="navbar" role="navigation">
     <a routerLink="/home"><img src="logo.png" alt="page-logo" aria-current="page"></a>
-    <a routerLink="/login">Login</a>
+    <a *ngIf="!authService.isAuthenticated()" routerLink="/login">Login</a>
+    <a *ngIf="authService.isAuthenticated()" (click)="authService.logout()" class="logout-link">Logout</a>
     <a routerLink="/about">About Us</a>
     <a routerLink="/car-form">Sell</a>
 </div>
