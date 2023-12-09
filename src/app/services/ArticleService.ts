@@ -16,23 +16,8 @@ import { Car } from '../models/car.model';
         
       };
 
-      public CreateArticle(car: Car): Observable<any> {
-        // const dataToSend = {
-      
-        //   brand: car.brand,
-        //   model: car.model,
-        //   year: car.year,
-        //   mileAge: car.mileAge,
-        //   fuelType: car.fuelType,
-        //   transmission: car.transmission,
-        //   contactName: car.contactName,
-        //   contactNumber: car.contactNumber,
-        //   price: car.price,
-        //   description: car.description,
-        //   imagelink: car.imagelink,
-        //   auctionDateTime: car.auctionDateTime
-        // };
-        console.log(car);
+      public CreateArticle(car: Car): Observable<any> {     
+        
         return this.http.post(`${this.baseUrl}/CarShop/Article/CreateCar`, car);
 
       }
