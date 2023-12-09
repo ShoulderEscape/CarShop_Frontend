@@ -1,5 +1,9 @@
 <div class="login-form">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div *ngIf="loginMessage" class="login-message">{{ loginMessage }}</div>
+
+
   <label for="username">Username:</label>
   <input type="text" id="username" formControlName="username">
 
@@ -10,6 +14,10 @@
 
   <div class="register-link">
     Don't have an account? <a routerLink="/register">Register</a>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
   </div>
   
 </form>

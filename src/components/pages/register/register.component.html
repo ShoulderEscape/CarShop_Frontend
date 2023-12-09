@@ -9,6 +9,10 @@
     <label for="confirmPassword">Confirm Password:</label>
     <input type="password" id="confirmPassword" formControlName="confirmPassword">
 
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
     <button type="submit" [disabled]="!registerForm.valid">Register</button>
   </form>
 </div>
