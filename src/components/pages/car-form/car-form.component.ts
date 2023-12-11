@@ -10,9 +10,12 @@ import { Car } from 'src/app/models/car.model';
 })
 export class CarFormComponent implements OnInit {
   carForm: FormGroup;
-  selectedFiles: File[] = [];
+  selectedFile: File | null = null;
 
-  constructor(private formBuilder: FormBuilder, private createArticleService: ArticleService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private createArticleService: ArticleService
+  ) {
     this.carForm = this.formBuilder.group({});
   }
 
@@ -37,49 +40,31 @@ export class CarFormComponent implements OnInit {
   onFilesSelected(event: Event) {
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
-    if (fileList) {
-      // Begränser antalet filer till max 10
-      for (
-        let i = 0;
-        i < fileList.length && this.selectedFiles.length < 10;
-        i++
-      ) {
-        this.selectedFiles.push(fileList[i]);
-      }
+    if (fileList && fileList.length > 0) {
+      this.selectedFile = fileList[0];
     }
   }
 
-
   onSubmit() {
     if (this.carForm.valid) {
-      const carData: Car = this.carForm.value as Car;
-      console.log('Car Data:', carData);
-
-      // Skapar FormData för att inkludera filer
       const formData = new FormData();
-      this.selectedFiles.forEach((file, index) => {
-        formData.append(`carImages[${index}]`, file, file.name);
+      if (this.selectedFile) {
+        formData.append('imageFile', this.selectedFile, this.selectedFile.name);
+      }
+
+      Object.keys(this.carForm.value).forEach((key) => {
+        const value = this.carForm.value[key];
+        formData.append(key, value.toString());
       });
 
-      // Lägger till carData i formData
-      for (const key in carData) {
-        if (carData.hasOwnProperty(key)) {
-          const value = carData[key as keyof Car];
-          formData.append(key, value);
-        }
-      }console.log(carData)
-      // Skicka formData till server här
-      this.createArticleService.CreateArticle(carData).subscribe(
-        response => {
+      this.createArticleService.CreateArticle(formData).subscribe(
+        (response) => {
           console.log('Success:', response);
         },
-        error => {
+        (error) => {
           console.error('Error:', error);
         }
-    );
-        
-          
-
+      );
     }
   }
 }
