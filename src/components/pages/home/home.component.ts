@@ -105,13 +105,12 @@ export class HomeComponent implements OnInit {
       const article = document.createElement('div');
       article.classList.add('article');
 
-      if (car.imagelink){
-
+      if (car.imagelink) { // Check for the presence of the image property
         const image = document.createElement('img');
-        image.setAttribute('src', car.imagelink);
+        const base64Image = this.arrayToBase64(car.imagelink);
+        image.setAttribute('src', 'data:image/png;base64,' + base64Image);
         image.classList.add('car-image');
         article.appendChild(image);
-
       }
 
       const imageFooter = document.createElement('div');
@@ -224,4 +223,20 @@ export class HomeComponent implements OnInit {
       .reverse()
       .join('');
   }
+  arrayToBase64(array: Uint8Array | null): string {
+    if (!array) {
+      return '';
+    }
+  
+    // Convert Uint8Array to a regular array
+    const byteArray = Array.from(array);
+  
+    // Convert regular array to binary string
+    const binaryString = String.fromCharCode.apply(null, byteArray);
+  
+    // Base64 encode the binary string
+    return btoa(binaryString);
+  }
+  
+  
 }

@@ -16,14 +16,16 @@ import { Car } from '../models/car.model';
         
       };
 
-      public CreateArticle(car: Car): Observable<any> {     
-        
-        return this.http.post(`${this.baseUrl}/CarShop/Article/CreateCar`, car);
-
-      }
-
+    public CreateArticle(car: any): Observable<any> {     
+      
+      return this.http.post(`${this.baseUrl}/CarShop/Article/CreateCar`, car);
 
     }
+    
+    
+
+
+  }
 
     // @Injectable({
     //   providedIn: 'root',

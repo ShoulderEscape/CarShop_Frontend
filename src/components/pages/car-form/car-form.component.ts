@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from 'src/app/services/ArticleService';
 import { Car } from 'src/app/models/car.model';
+import { ImageService } from 'src/app/services/ImageService';
+import { Injectable } from '@angular/core';
+
 
 @Component({
   selector: 'app-car-form',
@@ -12,16 +15,18 @@ export class CarFormComponent implements OnInit {
   carForm: FormGroup;
   selectedFiles: File[] = [];
 
-  constructor(private formBuilder: FormBuilder, private createArticleService: ArticleService) {
+
+  constructor(private formBuilder: FormBuilder, private createArticleService: ArticleService, private imageService: ImageService) {
     this.carForm = this.formBuilder.group({});
   }
+  
 
   ngOnInit() {
     this.carForm = this.formBuilder.group({
       brand: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
-      mileage: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      mileAge: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       fuelType: ['', Validators.required],
       transmission: ['', Validators.required],
       contactName: ['', Validators.required],
@@ -31,45 +36,40 @@ export class CarFormComponent implements OnInit {
       ],
       price: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       description: [''],
+      imagelink: []
     });
   }
 
   onFilesSelected(event: Event) {
-    const element = event.currentTarget as HTMLInputElement;
-    let fileList: FileList | null = element.files;
-    if (fileList) {
-      // Begränser antalet filer till max 10
-      for (
-        let i = 0;
-        i < fileList.length && this.selectedFiles.length < 10;
-        i++
-      ) {
-        this.selectedFiles.push(fileList[i]);
-      }
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement.files?.[0];
+  
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as ArrayBuffer;
+        this.carForm.patchValue({ imagelink: result }); 
+      };
+      reader.readAsArrayBuffer(file);
     }
   }
+  
 
 
   onSubmit() {
     if (this.carForm.valid) {
       const carData: Car = this.carForm.value as Car;
+      const carDTO: any = carData;
+      console.log(carData.imagelink instanceof Uint8Array);
+      if(carDTO.imagelink){
+        carDTO.imagelink=this.imageService.convertByteArrayToBase64(<Uint8Array>carData.imagelink);
+
+      }
       console.log('Car Data:', carData);
 
       // Skapar FormData för att inkludera filer
-      const formData = new FormData();
-      this.selectedFiles.forEach((file, index) => {
-        formData.append(`carImages[${index}]`, file, file.name);
-      });
-
-      // Lägger till carData i formData
-      for (const key in carData) {
-        if (carData.hasOwnProperty(key)) {
-          const value = carData[key as keyof Car];
-          formData.append(key, value);
-        }
-      }console.log(carData)
-      // Skicka formData till server här
-      this.createArticleService.CreateArticle(carData).subscribe(
+      
+      this.createArticleService.CreateArticle(carDTO).subscribe(
         response => {
           console.log('Success:', response);
         },
