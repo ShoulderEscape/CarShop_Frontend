@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppComponent } from './app.component';
 import { FooterComponent } from 'src/components/partial-views/footer/footer.component';
 import { HeaderComponent } from 'src/components/partial-views/header/header.component';
 
-
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule, BrowserModule], // Remove `NgModule` from imports
+    imports: [RouterTestingModule, BrowserModule, HttpClientModule], // Add HttpClientModule to imports
 
     declarations: [AppComponent, HeaderComponent, FooterComponent]
   }));
