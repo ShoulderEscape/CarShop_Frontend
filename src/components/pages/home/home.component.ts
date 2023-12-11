@@ -105,10 +105,14 @@ export class HomeComponent implements OnInit {
       const article = document.createElement('div');
       article.classList.add('article');
 
-      const image = document.createElement('img');
-      image.setAttribute('src', car.imagelink);
-      image.classList.add('car-image');
-      article.appendChild(image);
+      if (car.imagelink){
+
+        const image = document.createElement('img');
+        image.setAttribute('src', car.imagelink);
+        image.classList.add('car-image');
+        article.appendChild(image);
+
+      }
 
       const imageFooter = document.createElement('div');
       imageFooter.classList.add('image-footer');
