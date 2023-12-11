@@ -1,5 +1,5 @@
 export interface Car {
-  [key: string]: any;
+  //[key: string]: any;
   brand: string;
   model: string;
   year: number;
@@ -10,6 +10,6 @@ export interface Car {
   contactNumber: number;
   price: number;
   description?: string;
-  imagelink?: Uint8Array | null;
+  imagelink?: string;
   auctionDateTime: Date;
 }

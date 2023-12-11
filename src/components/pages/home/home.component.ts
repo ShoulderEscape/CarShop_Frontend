@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
       }
       const article = document.createElement('div');
       article.classList.add('article');
-
+      /*
       if (car.imagelink) { // Check for the presence of the image property
         const image = document.createElement('img');
         const base64Image = this.arrayToBase64(car.imagelink);
@@ -112,6 +112,7 @@ export class HomeComponent implements OnInit {
         image.classList.add('car-image');
         article.appendChild(image);
       }
+      */
 
       const imageFooter = document.createElement('div');
       imageFooter.classList.add('image-footer');

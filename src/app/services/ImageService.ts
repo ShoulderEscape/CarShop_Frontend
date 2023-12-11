@@ -10,10 +10,9 @@ export class ImageService {
   constructor() { }
 
   convertByteArrayToBase64(byteArray: Uint8Array): string {
-    console.log(byteArray instanceof Uint8Array);
-    const binary = btoa(String.fromCharCode(...byteArray));
-
-    console.log(binary);
-    return btoa(binary);
-  }
+    const binaryString = byteArray.reduce((acc, byte) => {
+      return acc + String.fromCharCode(byte);
+    }, '');
+    return btoa(binaryString);
+    }
 }

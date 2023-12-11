@@ -16,7 +16,7 @@ import { Car } from '../models/car.model';
         
       };
 
-    public CreateArticle(car: any): Observable<any> {     
+    public CreateArticle(car: Car): Observable<any> {     
       
       return this.http.post(`${this.baseUrl}/CarShop/Article/CreateCar`, car);
 

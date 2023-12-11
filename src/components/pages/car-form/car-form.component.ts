@@ -36,7 +36,7 @@ export class CarFormComponent implements OnInit {
       ],
       price: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       description: [''],
-      imagelink: []
+      imagelink: ['']
     });
   }
 
@@ -48,35 +48,39 @@ export class CarFormComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         const result = reader.result as ArrayBuffer;
-        this.carForm.patchValue({ imagelink: result }); 
+        const uint8Array = new Uint8Array(result);
+        console.log(uint8Array);
+        const temp =this.imageService.convertByteArrayToBase64(uint8Array);
+        this.carForm.patchValue({ imagelink: temp });
+
+
       };
+      
       reader.readAsArrayBuffer(file);
     }
   }
+  
   
 
 
   onSubmit() {
     if (this.carForm.valid) {
       const carData: Car = this.carForm.value as Car;
-      const carDTO: any = carData;
-      console.log(carData.imagelink instanceof Uint8Array);
-      if(carDTO.imagelink){
-        carDTO.imagelink=this.imageService.convertByteArrayToBase64(<Uint8Array>carData.imagelink);
-
-      }
+      
       console.log('Car Data:', carData);
+      console.log(carData.imagelink?.length);
+      
 
       // Skapar FormData för att inkludera filer
       
-      this.createArticleService.CreateArticle(carDTO).subscribe(
+      this.createArticleService.CreateArticle(carData).subscribe(
         response => {
           console.log('Success:', response);
         },
         error => {
           console.error('Error:', error);
         }
-    );
+      );
         
           
 
