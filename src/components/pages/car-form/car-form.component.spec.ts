@@ -5,25 +5,25 @@ import { CarFormComponent } from './car-form.component';
 import { DebugElement } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
-import { CreateArticleService } from 'src/app/services/ArticleService';
+import { ArticleService } from 'src/app/services/ArticleService';
 
 
 describe('CarFormComponent', () => {
   let component: CarFormComponent;
   let fixture: ComponentFixture<CarFormComponent>;
-  let createArticleService: CreateArticleService;
+  let articleService: ArticleService;
 
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CarFormComponent],
       imports: [ReactiveFormsModule, HttpClientTestingModule],
-      providers: [CreateArticleService],
+      providers: [ArticleService],
     });
 
     fixture = TestBed.createComponent(CarFormComponent);
     component = fixture.componentInstance;
-    createArticleService = TestBed.inject(CreateArticleService);
+    articleService = TestBed.inject(ArticleService);
   });
 
   it('should create', () => {
