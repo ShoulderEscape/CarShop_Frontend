@@ -66,6 +66,7 @@ export class FilterComponent {
     setManual(): void {
       this.changeTransmission('manual', ['automatic', 'any']);
     }
+    //fine code coverage
     
     
     filterChanged(){
@@ -91,9 +92,9 @@ export class FilterComponent {
       this.ValidateNumbers([
         yearMin, yearMax, mileageMin, 
         mileageMax, priceMin, priceMax]);
-      this.ValidateMinIsLowerThanMax(yearMin, yearMax);
-      this.ValidateMinIsLowerThanMax(mileageMin, mileageMax);
-      this.ValidateMinIsLowerThanMax(priceMin, priceMax);
+      this.ValidateMaxIsMoreThanMin(yearMin, yearMax);
+      this.ValidateMaxIsMoreThanMin(mileageMin, mileageMax);
+      this.ValidateMaxIsMoreThanMin(priceMin, priceMax);
 
      
       
@@ -114,14 +115,14 @@ export class FilterComponent {
 
 
     }
-    ValidateMinIsLowerThanMax(min: any, max: any) {
+    ValidateMaxIsMoreThanMin(min: any, max: any) {
       let addedToErrors = '';
     
       const minValue = parseInt(min.value);
       const maxValue = parseInt(max.value);
     
       if (!isNaN(minValue) && !isNaN(maxValue) && minValue > maxValue) {
-        addedToErrors += `${min.id}'s value needs to be lower than ${max.id}'s<br>`;
+        addedToErrors += `${min.id}'s value can't be higher than ${max.id}'s<br>`;
       }
     
       let errorLocation = document.getElementById("errormessages");
@@ -161,6 +162,7 @@ export class FilterComponent {
 
 
     }
+    
 
 
 
