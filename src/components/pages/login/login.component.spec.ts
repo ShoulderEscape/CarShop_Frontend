@@ -1,47 +1,89 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing'; 
-import { of, throwError } from 'rxjs';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/AuthService';
-import { Subject } from 'rxjs';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { of, throwError } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let authService: AuthService;
+  let mockAuthService: jasmine.SpyObj<AuthService>;
+  let mockRouter: jasmine.SpyObj<Router>;
+  let mockActivatedRoute;
 
-  beforeEach(() => {
-    const activatedRoute = {
-      snapshot: { paramMap: convertToParamMap({ registered: 'true' }) },
-      paramMap: new Subject(),
-    };
+  beforeEach(async () => {
+    mockAuthService = jasmine.createSpyObj('AuthService', ['login']);
+    mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+    mockActivatedRoute = { queryParams: of({}) }; // Justera baserat på dina behov
 
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule],
+      imports: [ReactiveFormsModule],
       providers: [
-        { provide: ActivatedRoute, useValue: activatedRoute },
-        {
-          provide: AuthService,
-          useValue: { login: jasmine.createSpy('login').and.returnValue(of('mockToken')) },
-        },
+        FormBuilder,
+        { provide: AuthService, useValue: mockAuthService },
+        { provide: Router, useValue: mockRouter },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
       ],
+    }).compileComponents();
+  });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create the form with two controls', () => {
+    expect(component.loginForm.contains('username')).toBeTrue();
+    expect(component.loginForm.contains('password')).toBeTrue();
+  });
+
+  it('should make the username and password controls required', () => {
+    let usernameControl = component.loginForm.get('username');
+    let passwordControl = component.loginForm.get('password');
+
+    usernameControl!.setValue('');
+    passwordControl!.setValue('');
+
+    expect(usernameControl!.valid).toBeFalse();
+    expect(passwordControl!.valid).toBeFalse();
+  });
+
+  it('should call authService.login if form is valid', () => {
+    const formValues = { username: 'testuser', password: 'testpass' };
+    mockAuthService.login.and.returnValue(of('fakeToken'));
+    component.loginForm.setValue(formValues);
+
+    component.onSubmit();
+
+    expect(mockAuthService.login).toHaveBeenCalledWith(formValues);
+  });
+  it('should navigate to home on successful login', () => {
+    mockAuthService.login.and.returnValue(of('fakeToken'));
+    component.loginForm.setValue({
+      username: 'testuser',
+      password: 'testpass',
     });
 
-    // ...
+    component.onSubmit();
+
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/home']);
   });
 
-  it('should create', () => {
-    // Trigger a route change to simulate ActivatedRoute paramMap update
-    const paramMap = TestBed.inject(ActivatedRoute).paramMap as Subject<any>;
-    paramMap.next(convertToParamMap({ registered: 'true' }));
+  it('should set errorMessage on login failure', () => {
+    mockAuthService.login.and.returnValue(
+      throwError(() => new Error('Login failed'))
+    );
+    component.loginForm.setValue({
+      username: 'testuser',
+      password: 'testpass',
+    });
 
-    expect(component).toBeTruthy();
+    component.onSubmit();
+
+    expect(component.errorMessage).toBe(
+      'Login failed, check username and password'
+    );
   });
 });
-
-

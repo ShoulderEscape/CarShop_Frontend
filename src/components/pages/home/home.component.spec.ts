@@ -95,7 +95,7 @@ describe('HomeComponent', () => {
         contactName: 'John Doe',
         contactNumber: 1234567890,
         price: 25000,
-        imagelink: 'path/to/image.jpg',
+        imagelink: 'jo',
         auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
       },
       {
@@ -109,27 +109,28 @@ describe('HomeComponent', () => {
         contactNumber: 9876543210,
         price: 20000,
         description: 'Well-maintained, low mileage car.',
-        imagelink: 'path/to/another-image.jpg',
+        imagelink: 'hello',
         auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
       }
-      
     ];
-
+  
     component.cars = mockCars;
     component.generateArticles();
-
+  
     const articles = fixture.nativeElement.querySelectorAll('.article');
     expect(articles.length).toBe(mockCars.length);
-
-    articles.forEach((article: { querySelector: (arg0: string) => { (): any; new(): any; textContent: any; getAttribute: 
-      { (arg0: string): any; new(): any; }; }; }, index: number) => {
+  
+    articles.forEach((article: any, index: number) => {
       const car = mockCars[index];
-
+  
       expect(article.querySelector('.title').textContent).toContain(`${car.brand} ${car.model}`);
       expect(article.querySelector('.price').textContent).toContain(`${component.formatPrice(car.price)} kr`);
-      expect(article.querySelector('.car-image').getAttribute('src')).toBe(car.imagelink);
+  
+      const expectedImageSrc = car.imagelink ? component.getFullImageUrl(car.imagelink) : '';
+      expect(article.querySelector('.car-image').getAttribute('src')).toBe(expectedImageSrc);
     });
   });
+  
   it('should return true if no filters are set', () => {
     // Create a mock car with arbitrary values
     const car: Car = {
