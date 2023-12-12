@@ -13,9 +13,11 @@ npm install -g @angular/cli
 npm install
 
 Run this as administrator (It is needed to run angular projects):
+
   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
   
 If you want to reverse this, you can run this command after you are done with the angular project:
+
   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Restricted
 
 
