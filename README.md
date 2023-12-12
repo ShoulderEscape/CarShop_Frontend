@@ -8,7 +8,16 @@ You can both sell and buy cars on this website. You can also login, and register
 
 ## Downloads:
 
-run: npm install when you get to the project
+npm install -g @angular/cli
+npm install when you get to the project
+Run this as administrator (It is needed to run angular projects):
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+  
+If you want to reverse this, you can run this command after you are done with the angular project:
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Restricted
+
+
+
 
 ## Development server
 
