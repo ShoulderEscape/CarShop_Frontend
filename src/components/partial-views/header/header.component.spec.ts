@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testin
 import { HeaderComponent } from './header.component';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http'; 
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -11,8 +11,8 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      schemas: [NO_ERRORS_SCHEMA], // This ignores unrecognized elements and attributes
-      imports: [HttpClientModule], // Add HttpClientModule to imports
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientModule], 
     });
 
     fixture = TestBed.createComponent(HeaderComponent);

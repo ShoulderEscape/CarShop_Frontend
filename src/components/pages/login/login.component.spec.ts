@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     mockAuthService = jasmine.createSpyObj('AuthService', ['login']);
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
-    mockActivatedRoute = { queryParams: of({}) }; // Justera baserat på dina behov
+    mockActivatedRoute = { queryParams: of({}) }; 
 
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],

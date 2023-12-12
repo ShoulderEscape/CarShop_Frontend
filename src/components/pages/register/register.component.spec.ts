@@ -45,24 +45,18 @@ describe('RegisterComponent', () => {
       confirmPassword: 'testpassword',
     };
 
-    // Set form values
     component.registerForm.setValue(registerData);
 
-    // Spy on the registerUser method
     const registerUserSpy = spyOn(userRegistrationService, 'registerUser').and.returnValue(of({ success: true }));
 
-    // Trigger form submission
     component.onSubmit();
     tick();
 
-    // Check if registerUser is called with the correct data
     expect(registerUserSpy).toHaveBeenCalledWith(registerData);
 
-    // Check if the router.navigate method is called with the expected parameters
     expect(router.navigate).toHaveBeenCalledWith(['/login'], {
       queryParams: { registered: 'true' },
     });
 
-    // Add more expectations based on your specific implementation
   }));
 });

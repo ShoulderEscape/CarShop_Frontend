@@ -74,7 +74,6 @@ describe('FilterComponent', () => {
 
     component.ValidateMaxIsMoreThanMin(min, max);
 
-    // Expect that no errors are added
     expect(document.getElementById('errormessages')?.innerHTML).toBe('');
   });
 
@@ -84,7 +83,6 @@ describe('FilterComponent', () => {
 
     component.ValidateMaxIsMoreThanMin(min, max);
 
-    // Expect that an error is added
     const errorMessageElement = document.getElementById('errormessages');
     expect(errorMessageElement?.innerHTML).toBe('');
   });
@@ -95,7 +93,6 @@ describe('FilterComponent', () => {
 
     component.ValidateMaxIsMoreThanMin(min, max);
 
-    // Expect that an error is added
     const errorMessageElement = document.getElementById('errormessages');
     expect(errorMessageElement).not.toBeNull();
     expect(errorMessageElement?.innerHTML).toContain("input1's value can't be higher than input2's");

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { exhaustAll, filter } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Filter } from 'src/app/models/filter.model';
 import { ArticleService } from 'src/app/services/ArticleService';
@@ -102,13 +101,17 @@ export class HomeComponent implements OnInit {
       }
       const article = document.createElement('div');
       article.classList.add('article');
+      const image = document.createElement('img');
 
       if (car.imagelink) {
-        const image = document.createElement('img');
         image.setAttribute('src', this.getFullImageUrl(car.imagelink));
-        image.classList.add('car-image');
-        article.appendChild(image);
+      } else{
+        image.setAttribute('src', "/src/example-car.png");
+
       }
+      image.classList.add('car-image');
+      article.appendChild(image);
+
 
       const imageFooter = document.createElement('div');
       imageFooter.classList.add('image-footer');
@@ -214,7 +217,6 @@ export class HomeComponent implements OnInit {
       .join('');
   }
 
-  // I din Angular-komponent
   getFullImageUrl(relativeUrl: string): string {
     return `https://localhost:7225${relativeUrl}`;
   }

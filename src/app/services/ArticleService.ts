@@ -22,10 +22,4 @@ export class ArticleService {
     );
   }
 }
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class CreateArticleService {
-//   private baseUrl = 'https://localhost:7225';
 
-//   constructor(private http: HttpClient) {}

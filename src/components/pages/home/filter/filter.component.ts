@@ -66,7 +66,6 @@ export class FilterComponent {
     setManual(): void {
       this.changeTransmission('manual', ['automatic', 'any']);
     }
-    //fine code coverage
     
     
     filterChanged(){
