@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 20px;
   padding-top: 10px;
+  justify-content: flex-start;
 }
 
 .article-container .article {
@@ -27,6 +28,7 @@
 
 .article-container .article .car-image {
   width: 100%;
+  height: auto;
 }
 
 .article-container .article .image-footer {

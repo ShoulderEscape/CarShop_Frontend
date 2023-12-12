@@ -2,6 +2,8 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-top: 50px;
+  z-index: 10;
 }
 
 .search-bar {
@@ -10,90 +12,116 @@
   align-items: center;
 }
 
-.search-bar input {
-  width: 50vw;
+.search-bar input[type="text"] {
+  width: 100%;
   padding: 8px;
+  border: 1px solid #ccc;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  font-size: 1em;
 }
 
 .search-bar button {
   border: none;
+  background-color: #164863;
+  padding: 8px 12px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   cursor: pointer;
+  color: white;
 }
 
 .search-icon {
-  height: 30px;
+  height: 20px;
+}
+
+.filter-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .filter-button {
-  justify-content: center;
-  background-color: #9BBEC8;
-  padding: 1%;
+  background-color: #164863;
+  color: white;
+  padding: 10px 20px;
   cursor: pointer;
-  border-bottom: none;
-  border-top-right-radius: 1vh;
-  border-top-left-radius: 1vh;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+  width: auto;
+}
+
+.filter-button:hover {
+  background-color: #9BBEC8;
 }
 
 #errormessages {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px auto;
   text-align: center;
   color: red;
 }
 
 .filter-container {
   display: none;
-  background-color: #9BBEC8;
-  border-radius: 1vh;
-  margin: 0%;
+  background-color: #DDF2FD;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .filter-container label {
+  display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  margin-right: 10px;
 }
 
 .filter-container .filter-range-container {
-  justify-content: center;
   display: flex;
-  flex-direction: row !important;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.filter-container .filter-range-container > input, .filter-container .filter-range-container select {
-  margin-right: 5%;
-}
-
-.filter-container .filter-range-container {
-  width: 100%;
+.filter-container input[type="text"], .filter-container select {
   padding: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 40%;
+  margin: 5px;
 }
 
-.filter-container .transmission-options {
-  display: flex;
+.filter-container .transmission-options input[type="button"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
 }
 
-.filter-container .transmission-options input {
-  margin-right: 8px;
+.filter-container .transmission-options input[type="button"]:hover {
+  background-color: #e0e0e0;
 }
 
-.filter-container input {
-  width: 50%;
-}
-
-.filter-button-container {
-  display: flex;
-  justify-content: center;
-}
-
-.filter-button {
-  width: 25%;
+@media screen and (max-width: 768px) {
+  .search-bar-container {
+    margin-top: 60px;
+  }
+  .search-bar input[type="text"] {
+    width: 80%;
+  }
+  .filter-container .filter-range-container input[type="text"],
+  .filter-container .filter-range-container select {
+    width: 70%;
+  }
+  .filter-button-container .filter-button {
+    width: 50%;
+  }
 }
 
 .visible {

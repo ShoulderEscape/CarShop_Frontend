@@ -6,4 +6,5 @@ a {
 
 .page {
   padding-top: 2.5%;
+  min-height: calc(85vh - 30px);
 }
