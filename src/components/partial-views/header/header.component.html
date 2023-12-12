@@ -1,0 +1,17 @@
+<div class="mobile-container">
+    <div class="menu-toggle" (click)="toggleMenu()" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <a routerLink="/home" id="mobile-logo"><img src="logo.png" alt="page-logo" aria-current="page"></a>
+</div>
+
+
+<div class="navbar" role="navigation">
+    <a routerLink="/home"><img src="logo.png" alt="page-logo" aria-current="page"></a>
+    <a *ngIf="!authService.isAuthenticated()" routerLink="/login">Login</a>
+    <a *ngIf="authService.isAuthenticated()" (click)="authService.logout()" class="logout-link">Logout</a>
+    <a routerLink="/about">About Us</a>
+    <a routerLink="/car-form">Sell</a>
+</div>
