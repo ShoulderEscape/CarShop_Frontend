@@ -4,7 +4,7 @@ footer {
     padding: 20px; 
     text-align: center;
   
-    .navbar {
+    .footer-container {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
@@ -33,14 +33,14 @@ footer {
     }
 
     @media screen and (max-width: 768px) {
-        .navbar button {
+        .footer-container button {
             padding: 8px 10px;
             font-size: 0.8em;
         }
     }
 
     @media screen and (max-width: 480px) {
-        .navbar {
+        .footer-container {
             flex-direction: column;
         }
     }

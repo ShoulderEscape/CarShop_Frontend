@@ -41,6 +41,12 @@
   height: 44px;
 }
 
+@media only screen and (max-width: 600px) {
+  .navbar > *:first-child img {
+    height: 30px;
+  }
+}
+
 .mobile-container {
   display: none;
 }
@@ -64,8 +70,8 @@
     padding-left: 5%;
     padding-right: 30%;
   }
-  #mobile-logo > {
-    height: 44px;
+  #mobile-logo img {
+    height: 30px;
   }
   .navbar {
     display: none;

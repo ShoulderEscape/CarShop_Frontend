@@ -113,7 +113,7 @@
     margin-top: 60px;
   }
   .search-bar input[type="text"] {
-    width: 80%;
+    width: 70%;
   }
   .filter-container .filter-range-container input[type="text"],
   .filter-container .filter-range-container select {
