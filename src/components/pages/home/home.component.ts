@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
       if (car.imagelink) {
         image.setAttribute('src', this.getFullImageUrl(car.imagelink));
       } else{
-        image.setAttribute('src', "/src/example-car.png");
+        image.setAttribute('src', "/example-car.png");
 
       }
       image.classList.add('car-image');
