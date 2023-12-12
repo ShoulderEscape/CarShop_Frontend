@@ -8,7 +8,8 @@ footer {
 footer .navbar {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
 }
 
 footer button {
@@ -16,6 +17,7 @@ footer button {
   color: #fff;
   border: none;
   padding: 8px 16px;
+  margin: 5px;
   cursor: pointer;
   border-radius: 50px;
   text-transform: uppercase;
@@ -28,4 +30,18 @@ footer button:hover {
 footer a {
   color: #fff;
   text-decoration: none;
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 768px) {
+  footer .navbar button {
+    padding: 8px 10px;
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer .navbar {
+    flex-direction: column;
+  }
 }

@@ -3,15 +3,14 @@
     flex-wrap: wrap;
     gap: 20px; 
     padding-top: 10px;
-    
+    justify-content: flex-start;
+
     .article {
-        width: calc(25% - 20px); 
+        width: calc(25% - 20px);
         box-sizing: border-box;
         overflow: hidden;
-
         border: 5px solid #164863;
         background-color: #427D9D;
-
 
         @media screen and (max-width: 768px) {
             width: calc(50% - 20px); 
@@ -21,34 +20,32 @@
             width: calc(100% - 20px); 
         }
 
-        .car-image{
-            width:100%;
+        .car-image {
+            width: 100%;
+            height: auto;
         }
-        .image-footer{
+        .image-footer {
             background-color: #164863;
             width: 100%;
             height: fit-content;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 80px; 
-
         }
-        .title{
+        .title {
             font-weight: bold;
             font-size: x-large;
             color: #DDF2FD;
         }
-        .price{
+        .price {
             font-size: x-large;
-
             background-color: #164863;
-
-            color:#85bb65;
+            color: #85bb65;
         }
     }
-  }
-  
-  .created-Message {
+}
+
+.created-Message {
     margin-bottom: 20px;
     padding: 10px 20px;
     border: 1px solid #4caf50;
@@ -59,7 +56,5 @@
     font-weight: bold;
     font-size: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
     transition: all 0.3s ease-in-out;
-  }
-  
+}
