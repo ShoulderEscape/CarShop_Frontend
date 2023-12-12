@@ -6,6 +6,9 @@ This project was created using [Angular CLI](https://github.com/angular/angular-
 The project is a simple used car reselling store, kinda lika "Tradera". 
 You can both sell and buy cars on this website. You can also login, and register an account.
 
+## Downloads:
+
+run: npm install when you get to the project
 
 ## Development server
 
