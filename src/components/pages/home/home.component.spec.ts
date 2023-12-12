@@ -5,17 +5,27 @@ import { HomeComponent } from './home.component';
 import { FilterComponent } from './filter/filter.component';
 import { ArticleService } from 'src/app/services/ArticleService';
 import { Car } from 'src/app/models/car.model';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let articleService: ArticleService;
+  let mockRouter: jasmine.SpyObj<Router>;
+  let mockActivatedRoute;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+    mockActivatedRoute = { queryParams: of({}) }; 
+
+
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       declarations: [HomeComponent, FilterComponent],
-      providers: [ArticleService]
+      providers: [ArticleService,
+        { provide: Router, useValue: mockRouter },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },]
     });
 
     fixture = TestBed.createComponent(HomeComponent);
