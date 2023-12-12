@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from 'src/app/services/ArticleService';
 import { Car } from 'src/app/models/car.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-form',
@@ -14,7 +15,8 @@ export class CarFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private createArticleService: ArticleService
+    private createArticleService: ArticleService,
+    private router: Router
   ) {
     this.carForm = this.formBuilder.group({});
   }
@@ -59,7 +61,10 @@ export class CarFormComponent implements OnInit {
 
       this.createArticleService.CreateArticle(formData).subscribe(
         (response) => {
-          console.log('Success:', response);
+          console.log('Register Complete', response);
+          this.router.navigate(['/home'], {
+            queryParams: { createdArticle: 'true' },
+          });
         },
         (error) => {
           console.error('Error:', error);

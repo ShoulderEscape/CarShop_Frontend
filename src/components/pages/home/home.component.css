@@ -49,3 +49,17 @@
   background-color: #164863;
   color: #85bb65;
 }
+
+.created-Message {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: 1px solid #4caf50;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
