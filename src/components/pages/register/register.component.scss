@@ -6,7 +6,7 @@
   padding: 25px;
   margin: 40px auto;
   max-width: 350px;
-  background-color: rgba(150, 148, 148, 0.176); // Mjuk gråton för distinktion
+  background-color: rgba(150, 148, 148, 0.176); 
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0.1, 0.5);
   font-family: 'Arial', sans-serif;
@@ -16,19 +16,19 @@
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
-    color: #333; // Mörk text för läsbarhet
+    color: #333; 
   }
 
   input {
      width: calc(100% - 24px);
     padding: 12px;
     margin-bottom: 20px;
-    border: 2px solid #ddd; // Ljusgrå för ett mjukt utseende
+    border: 2px solid #ddd; 
     border-radius: 6px;
     font-size: 15px;
 
     &:focus {
-      border-color: #164863; // Mörkblå när fältet är i fokus
+      border-color: #164863; 
       box-shadow: 0 0 0 3px rgba(22, 72, 99, 0.2);
       outline: none;
     }
@@ -40,7 +40,7 @@
     margin-top: 10px;
     border: none;
     border-radius: 6px;
-    background-color: #164863; // Mörkblå för knapp
+    background-color: #164863;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -62,7 +62,7 @@
     font-size: 14px;
 
     a {
-      color: #164863; // Mörkblå för länkar
+      color: #164863; 
       text-decoration: none;
 
       &:hover {

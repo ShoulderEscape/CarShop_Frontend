@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http'; 
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { HeaderComponent } from 'src/components/partial-views/header/header.comp
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule, BrowserModule, HttpClientModule], // Add HttpClientModule to imports
+    imports: [RouterTestingModule, BrowserModule, HttpClientModule], 
 
     declarations: [AppComponent, HeaderComponent, FooterComponent]
   }));

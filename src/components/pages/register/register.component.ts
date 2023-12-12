@@ -25,7 +25,6 @@ export class RegisterComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-      //Fler fält???
     });
   }
 

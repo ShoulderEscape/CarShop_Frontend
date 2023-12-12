@@ -29,8 +29,8 @@
             width: 100%;
             height: fit-content;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); // Two columns of equal width
-            grid-gap: 80px; // Adjust the gap between the columns
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 80px; 
 
         }
         .title{

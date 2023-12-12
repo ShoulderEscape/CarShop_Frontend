@@ -75,7 +75,7 @@ describe('HomeComponent', () => {
 
 
   it('should show an error alert for unknown filter', () => {
-    spyOn(window, 'alert'); // Spy on the alert function
+    spyOn(window, 'alert');
 
     const unknownFilter: [string, string] = ['unknown-filter', 'value'];
     component.applyFilterChangesToShownArticles(unknownFilter);
@@ -132,7 +132,6 @@ describe('HomeComponent', () => {
   });
   
   it('should return true if no filters are set', () => {
-    // Create a mock car with arbitrary values
     const car: Car = {
       brand: 'Toyota',
       model: 'Camry',
@@ -147,13 +146,10 @@ describe('HomeComponent', () => {
       auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
     };
 
-    // Set filter to an empty object
     component.filter = {};
 
-    // Call the method
     const result = component.doesArticleFitInFilter(car);
 
-    // Expect the result to be true since no filters are set
     expect(result).toBe(true);
   });
 
