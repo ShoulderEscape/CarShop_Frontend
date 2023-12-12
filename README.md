@@ -10,7 +10,7 @@ You can both sell and buy cars on this website. You can also login, and register
 
 npm install -g @angular/cli
 
-npm install when you get to the project
+npm install
 
 Run this as administrator (It is needed to run angular projects):
   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
