@@ -3,6 +3,8 @@ import { exhaustAll, filter } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Filter } from 'src/app/models/filter.model';
 import { ArticleService } from 'src/app/services/ArticleService';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +15,12 @@ import { ArticleService } from 'src/app/services/ArticleService';
 export class HomeComponent implements OnInit {
   cars: Car[] = [];
   filter: Filter = [];
+  createdArticleMessage = "";
 
   ERROR_MESSAGE_ABOUT_MISSING_FILTER_FUNCTIONS =
     'There is no filter functionality about this filter, please inform us of this problem, and we will fix it';
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.articleService.getArticles().subscribe(
@@ -28,8 +31,14 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+      });
+
+    this.route.queryParams.subscribe((params) => {
+      if (params['createdArticle'] === 'true') {
+        this.createdArticleMessage = 'Article successfuly created.';
       }
-    );
+    });
+
   }
   applyFilterChangesToShownArticles(thisFilter: [string, string]) {
     if (this.filter) {
