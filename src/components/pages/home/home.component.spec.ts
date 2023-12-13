@@ -82,6 +82,52 @@ describe('HomeComponent', () => {
 
     expect(component.filter.yearMin).toBe(2020);
   });
+  it('should update the filter correctly for year-max', () => {
+    const filterChange: [string, string] = ['year-max', '2020'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.yearMax).toBe(2020);
+  });
+  it('should update the filter correctly for mileage-max', () => {
+    const filterChange: [string, string] = ['mileage-max', '2020'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.mileageMax).toBe(2020);
+  });
+  it('should update the filter correctly for mileage-min', () => {
+    const filterChange: [string, string] = ['mileage-min', '2020'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.mileageMin).toBe(2020);
+  });
+  it('should update the filter correctly for price-min', () => {
+    const filterChange: [string, string] = ['price-min', '2020'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.priceMin).toBe(2020);
+  });
+  it('should update the filter correctly for price-max', () => {
+    const filterChange: [string, string] = ['price-max', '2020'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.priceMax).toBe(2020);
+  });
+
+  it('should update the filter correctly for transmission', () => {
+    const filterChange: [string, string] = ['transmission', 'automatic'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.transmission).toBe('automatic');
+  });
+  it('should update the filter correctly for fuelType', () => {
+    const filterChange: [string, string] = ['fuel-type', 'electric'];
+    component.applyFilterChangesToShownArticles(filterChange);
+
+    expect(component.filter.fuelType).toBe('electric');
+  });
+
+  
+
 
 
   it('should show an error alert for unknown filter', () => {
@@ -202,6 +248,7 @@ describe('HomeComponent', () => {
 
     expect(result).toBe(false);
   });
+  
 
 
   it('should return true if car passes all filter conditions', () => {
@@ -227,6 +274,33 @@ describe('HomeComponent', () => {
     const result = component.doesArticleFitInFilter(car);
 
     expect(result).toBe(true);
+  });
+
+  it('should add default image when there is no image', () => {
+    const cars = [
+      {
+        brand: 'Toyota',
+        model: 'Camry',
+        year: 2020,
+        mileAge: 50000,
+        fuelType: 'Petrol',
+        transmission: 'Automatic',
+        contactName: 'John Doe',
+        contactNumber: 1234567890,
+        price: 25000,
+        auctionDateTime: new Date(2023, 11, 8, 14, 30, 0),
+
+      },
+    ];
+
+    component.cars = cars;
+    component.generateArticles();
+
+    const articleContainer = document.querySelector('.article-container');
+    const defaultImage = document.querySelector('.article .car-image[src="/example-car.png"]');
+
+    expect(articleContainer).toBeTruthy(); 
+    expect(defaultImage).toBeTruthy(); 
   });
 
   

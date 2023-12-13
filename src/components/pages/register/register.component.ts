@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  private passwordsMatch(): boolean {
+  public passwordsMatch(): boolean {
     const password = this.registerForm.get('password')?.value;
     const confirmPassword = this.registerForm.get('confirmPassword')?.value;
     return password === confirmPassword;
